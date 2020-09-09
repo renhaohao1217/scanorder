@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "classify-list": "../../components/classify-list/classify-list"
+  }
+}

@@ -1,0 +1,28 @@
+<view class="classify-list">
+  <view class="container-left">
+    <view class="left-list" wx:for="{{5}}">
+      <text>商品分类</text>
+    </view>
+    <button wx:if="{{source=='waiter'}}" type="primary" size="default">添加</button>
+  </view>
+  <view class="container-right">
+    <view class="right-list" wx:for="{{5}}">
+      <image src="http://chuantu.xyz/t6/740/1599547544x2073446523.jpg"></image>
+      <view class="right-list-content">
+        <text class="name">菜品名称</text>
+        <text class="price">￥66.66</text>
+        <view class="button" wx:if="{{source=='user'}}">
+          <view class="btn">-</view>
+          <text class="">0</text>
+          <view class="btn">+</view>
+        </view>
+        <view class="button" wx:else>
+          <view class="btn">-</view>
+          <!-- <text class="">0</text> -->
+          <view class="btn">+</view>
+        </view>
+      </view>
+    </view>
+    <button wx:if="{{source=='waiter'}}" type="primary" size="default">添加</button>
+  </view>
+</view>

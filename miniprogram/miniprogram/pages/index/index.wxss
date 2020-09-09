@@ -1,0 +1,17 @@
+.index-background {
+  width: 100%;
+}
+.index-button {
+  width: 368rpx;
+  padding: 80rpx;
+  padding-bottom: 40rpx;
+  margin: 0 auto;
+  background-color: rgba(220, 220, 220, 0.3);
+  border-radius: 20rpx;
+  position: relative;
+  top: -40rpx;
+}
+.index-button > button {
+  width: 100%;
+  margin-bottom: 40rpx;
+}

@@ -1,0 +1,5 @@
+<image class="index-background" src="cloud://zhima-zaczd.7a68-zhima-zaczd-1302082565/161831-1499674711c824.jpg"></image>
+<view class="index-button">
+  <button type="primary">商家登录</button>
+  <button type="primary" plain="{{true}}">商家注册</button>
+</view>

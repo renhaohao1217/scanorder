@@ -1,0 +1,5 @@
+<!-- pages/menu/menu.wxml -->
+<text>pages/menu/menu.wxml</text>
+<navigator class="" target="" url="../index/index" hover-class="navigator-hover" open-type="navigate">
+  index
+</navigator>

@@ -1,0 +1,13 @@
+.register-container {
+  padding: 40rpx 60rpx;
+}
+input {
+  padding: 20rpx 0;
+}
+input ~ input {
+  border-top: 1px solid #eee;
+}
+text {
+  font-size: 14px;
+  color: #fa5151;
+}

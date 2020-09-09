@@ -1,0 +1,25 @@
+<navigation-bar></navigation-bar>
+<view class="register-container">
+  <!-- 用户名 -->
+  <input value="{{username}}" type="text" placeholder="用户名" bindinput="input_model" data-target="username" bindfocus="toast" bindblur="check"></input>
+  <text wx:if="{{focus.username}}">请输入6-20个字母,数字, _ , - ,以字母开头</text>
+  <text wx:if="{{format.username}}">用户名格式不正确</text>
+  <!-- 手机号 -->
+  <input value="{{phone}}" type="number" placeholder="手机号" bindinput="input_model" data-target="phone" bindfocus="toast" bindblur="check"></input>
+  <text wx:if="{{format.phone}}">手机号格式不正确</text>
+  <!-- 店名 -->
+  <input value="{{shop}}" type="text" placeholder="店名" bindinput="input_model" bindfocus="toast" bindblur="check" data-target="shop"></input>
+  <text wx:if="{{format.shop}}">店名不能为空</text>
+  <!-- 地址 -->
+  <input value="{{address}}" type="text" placeholder="地址" bindinput="input_model" bindfocus="toast" bindblur="check" data-target="address"></input>
+  <text wx:if="{{format.address}}">地址不能为空</text>
+  <!-- 密码 -->
+  <input value="{{password}}" type="text" password="{{true}}" placeholder="请输入登录密码" bindinput="input_model" bindfocus="toast" bindblur="check" data-target="password"></input>
+  <text wx:if="{{focus.password}}">请输入6-20个字母,数字, _ , -</text>
+  <text wx:if="{{format.password}}">密码格式不正确</text>
+  <!-- 确认密码 -->
+  <input value="{{repassword}}" type="text" password="{{true}}" placeholder="请再次输入登录密码" bindinput="input_model" bindfocus="toast" bindblur="check" data-target="repassword"></input>
+  <text wx:if="{{focus.repassword}}">请确认登录密码</text>
+  <text wx:if="{{format.repassword}}">登录密码不一致</text>
+  <button type="primary">立即注册</button>
+</view>

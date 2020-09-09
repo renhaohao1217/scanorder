@@ -1,0 +1,9 @@
+.login-container {
+  padding: 40rpx 60rpx;
+}
+input {
+  padding: 20rpx 0;
+}
+input ~ input {
+  border-top: 1px solid #eee;
+}

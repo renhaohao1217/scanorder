@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/order/order",
+    "pages/index/index",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/home/home",
+    "pages/indent/indent",
+    "pages/menu/menu",
+    "pages/business/business"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "scanorder",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#696969",
+    "selectedColor": "#FA5151",
+    "backgroundColor": "",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/order/order",
+        "text": "点餐",
+        "iconPath": "./images/order.png",
+        "selectedIconPath": "./images/order_a.png"
+      },
+      {
+        "pagePath": "pages/menu/menu",
+        "text": "菜单",
+        "iconPath": "./images/menu.png",
+        "selectedIconPath": "./images/menu_a.png"
+      },
+      {
+        "pagePath": "pages/indent/indent",
+        "text": "订单",
+        "iconPath": "./images/indent.png",
+        "selectedIconPath": "./images/indent_a.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "我的",
+        "iconPath": "./images/home.png",
+        "selectedIconPath": "./images/home_a.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
