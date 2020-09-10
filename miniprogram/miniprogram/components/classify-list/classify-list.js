@@ -7,6 +7,10 @@ Component({
     result: {
       type: Array,
       value: []
+    },
+    source: {
+      type: String,
+      value: 'user'
     }
   },
 
@@ -14,7 +18,6 @@ Component({
    * 组件的初始数据
    */
   data: {
-    source: 'user',
     results: [],
     active: 0,
     num: 0,

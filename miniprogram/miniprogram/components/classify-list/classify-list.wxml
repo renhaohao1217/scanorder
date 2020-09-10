@@ -3,8 +3,12 @@
   <view class="container-left">
     <view class="left-list {{index==active?'active':''}}" wx:for="{{result}}" wx:key="index" bindtap="select" data-index="{{index}}">
       <text>{{item.title}}</text>
+      <view class="button" wx:if="{{source=='waiter'}}">
+        <image class="btn-icon" src="/images/transfer.png"></image>
+        <image class="btn-icon" src="/images/remove.png"></image>
+      </view>
     </view>
-    <button wx:if="{{source=='waiter'}}" type="primary" size="default">添加</button>
+    <button wx:if="{{source=='waiter'}}" type="primary" size="mini">添加</button>
   </view>
   <!-- 商品列表 -->
   <view class="container-right">
@@ -19,13 +23,12 @@
           <view class="btn" bindtap="calc" data-count="+" data-index="{{index}}">+</view>
         </view>
         <view class="button" wx:else>
-          <view class="btn">-</view>
-          <!-- <text class="">0</text> -->
-          <view class="btn">+</view>
+          <image class="btn-icon" src="/images/transfer.png"></image>
+          <image class="btn-icon" src="/images/remove.png"></image>
         </view>
       </view>
     </view>
-    <text class="right-bottom">~我已经到底了~</text>
+    <text class="right-bottom" wx:if="{{source=='user'}}">~我已经到底了~</text>
     <button wx:if="{{source=='waiter'}}" type="primary" size="default">添加</button>
   </view>
 </view>

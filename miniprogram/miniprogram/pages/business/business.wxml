@@ -11,7 +11,7 @@
   </view>
   <!-- 商品列表 -->
   <view class="order-container">
-    <classify-list result="{{result}}" results="{{results}}" bindmyevent="myevent"></classify-list>
+    <classify-list result="{{result}}" bindmyevent="myevent"></classify-list>
   </view>
   <!-- 底部购物车 -->
   <view class="order-footer">

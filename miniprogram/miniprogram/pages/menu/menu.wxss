@@ -1,1 +1,7 @@
-/* pages/menu/menu.wxss */
+page {
+  height: 100%;
+}
+.menu-container {
+  height: 100%;
+  overflow: hidden;
+}

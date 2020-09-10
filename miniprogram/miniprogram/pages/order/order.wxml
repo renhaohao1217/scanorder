@@ -8,5 +8,4 @@
     <image class="" src="/images/serial.svg"></image>
     <text>流水号点餐</text>
   </view>
-  <!-- <navigator url="/pages/business/business">business</navigator> -->
 </view>

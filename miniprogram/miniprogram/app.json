@@ -1,12 +1,14 @@
 {
   "pages": [
+    "pages/indent/indent",
     "pages/menu/menu",
+    "pages/standard/standard",
     "pages/order/order",
     "pages/index/index",
     "pages/login/login",
     "pages/register/register",
-    "pages/home/home",
-    "pages/indent/indent",
+    "pages/home/home", 
+    
     "pages/business/business"
   ],
   "window": {

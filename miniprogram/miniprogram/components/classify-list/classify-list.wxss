@@ -12,9 +12,9 @@
   box-sizing: border-box;
   overflow-y: scroll;
   overflow-x: hidden;
+  text-align: center;
 }
 .left-list {
-  text-align: center;
   padding: 20rpx;
 }
 .left-list + .left-list {
@@ -24,6 +24,12 @@
   background-color: #fff;
   color: #fa5151;
 }
+.left-list .button {
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
 .container-right {
   width: 525rpx;
   height: 100%;
@@ -81,4 +87,8 @@
   text-align: center;
   background-color: #fff;
   color: #ccc;
+}
+.btn-icon {
+  width: 50rpx;
+  height: 50rpx;
 }
