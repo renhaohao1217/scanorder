@@ -1,5 +1,2 @@
-<!-- pages/menu/menu.wxml -->
-<text>pages/menu/menu.wxml</text>
-<navigator class="" target="" url="../index/index" hover-class="navigator-hover" open-type="navigate">
-  index
-</navigator>
+<navigation-bar title="菜单"></navigation-bar>
+<view class="menu-container">11</view>

@@ -1,3 +1,12 @@
-<view class="business">
-  <classify-list></classify-list>
+<navigation-bar title="点餐"></navigation-bar>
+<view class="order-container">
+  <view class="order-box" data-method="table" bindtap="order">
+    <image class="" src="/images/table.svg"></image>
+    <text>桌号点餐</text>
+  </view>
+  <view class="order-box" data-method="serial" bindtap="order">
+    <image class="" src="/images/serial.svg"></image>
+    <text>流水号点餐</text>
+  </view>
+  <!-- <navigator url="/pages/business/business">business</navigator> -->
 </view>

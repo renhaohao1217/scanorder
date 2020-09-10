@@ -18,7 +18,11 @@
   padding: 20rpx;
 }
 .left-list + .left-list {
-  border-top: 1px solid #eee;
+  border-top: 1px solid #ccc;
+}
+.active {
+  background-color: #fff;
+  color: #fa5151;
 }
 .container-right {
   width: 525rpx;
@@ -30,9 +34,10 @@
   padding: 20rpx;
   display: flex;
   justify-content: space-between;
+  background-color: #fff;
 }
 .right-list + .right-list {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #eee;
 }
 .right-list > image {
   width: 180rpx;
@@ -63,8 +68,17 @@
   color: rgb(250, 81, 81);
   border-radius: 50%;
   box-shadow: 0 0 1px #ccc;
-  background-color: #fff;
+  background-color: #eee;
 }
 .right-list-content > text {
   margin-bottom: 20rpx;
+}
+.right-bottom {
+  display: inline-block;
+  width: 100%;
+  padding: 60rpx;
+  border-top: 1px solid #eee;
+  text-align: center;
+  background-color: #fff;
+  color: #ccc;
 }

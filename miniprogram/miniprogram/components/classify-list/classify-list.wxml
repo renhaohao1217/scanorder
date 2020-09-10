@@ -1,20 +1,22 @@
 <view class="classify-list">
+  <!-- 分类列表 -->
   <view class="container-left">
-    <view class="left-list" wx:for="{{5}}">
-      <text>商品分类</text>
+    <view class="left-list {{index==active?'active':''}}" wx:for="{{result}}" wx:key="index" bindtap="select" data-index="{{index}}">
+      <text>{{item.title}}</text>
     </view>
     <button wx:if="{{source=='waiter'}}" type="primary" size="default">添加</button>
   </view>
+  <!-- 商品列表 -->
   <view class="container-right">
-    <view class="right-list" wx:for="{{5}}">
+    <view class="right-list" wx:for="{{results}}" wx:key="index">
       <image src="http://chuantu.xyz/t6/740/1599547544x2073446523.jpg"></image>
       <view class="right-list-content">
-        <text class="name">菜品名称</text>
-        <text class="price">￥66.66</text>
+        <text class="name">{{item.title}}</text>
+        <text class="price">￥{{item.price}}</text>
         <view class="button" wx:if="{{source=='user'}}">
-          <view class="btn">-</view>
-          <text class="">0</text>
-          <view class="btn">+</view>
+          <view class="btn" bindtap="calc" data-count="-" data-index="{{index}}">-</view>
+          <text class="">{{item.num}}</text>
+          <view class="btn" bindtap="calc" data-count="+" data-index="{{index}}">+</view>
         </view>
         <view class="button" wx:else>
           <view class="btn">-</view>
@@ -23,6 +25,7 @@
         </view>
       </view>
     </view>
+    <text class="right-bottom">~我已经到底了~</text>
     <button wx:if="{{source=='waiter'}}" type="primary" size="default">添加</button>
   </view>
 </view>

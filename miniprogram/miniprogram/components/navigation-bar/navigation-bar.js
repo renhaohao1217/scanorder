@@ -12,6 +12,32 @@ Component({
       wx.getStorageSync('navigationBarHeight') +
       'px'
   },
-  properties: {},
-  methods: {}
+  properties: {
+    img_source: {
+      type: String,
+      value: '/images/main.png'
+    },
+    title: {
+      type: String,
+      value: ''
+    },
+    icon: {
+      type: String,
+      value: 'home'
+    }
+  },
+  methods: {
+    back () {
+      if (this.properties.icon == 'home') {
+        wx.reLaunch({
+          url: '/pages/home/home'
+        })
+      } else {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+
+    }
+  }
 })

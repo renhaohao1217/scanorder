@@ -9,6 +9,19 @@ Page({
   },
 
   /**
+   * 自定义函数
+   */
+  order (event) {
+    let method = event.currentTarget.dataset.method;
+    wx.navigateTo({
+      url: '/pages/business/business',
+      success: res => {
+        res.eventChannel.emit('acceptDataFromOpenerPage', { method })
+      }
+    })
+  },
+
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
