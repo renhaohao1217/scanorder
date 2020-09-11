@@ -1,0 +1,54 @@
+/* 容器样式 */
+.task-list-container {
+  display: inline-block;
+  width: 350px;
+  min-height: 200px;
+  box-shadow: 0 0 10px #ccc;
+  border-radius: 5px;
+  margin: 5px;
+}
+/* 标题 */
+.task-title {
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+.title-name {
+  display: inline-block;
+  width: 50%;
+}
+.title-time,
+.title-nav {
+  display: inline-block;
+  width: 25%;
+}
+/* 内容 */
+.task-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.content-list {
+  min-width: 80px;
+  min-height: 70px;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 10px 0 10px 10px;
+  box-shadow: 0 0 5px #ccc;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+/* 通用 */
+.fs14 {
+  font-size: 14px;
+}
+.c080 {
+  color: #080;
+}
+.fa5151 {
+  color: #fa5151;
+}
+.c00f {
+  color: #00f;
+}

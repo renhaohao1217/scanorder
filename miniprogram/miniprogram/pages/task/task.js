@@ -1,17 +1,11 @@
-// pages/indent/indent.js
+// pages/task/task.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    indent: {
-      number: '2',
-      classify: '桌号',
-      state: '代收款',
-      time: '50分钟前',
-      price: '422'
-    }
+
   },
 
   /**

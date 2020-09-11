@@ -1,0 +1,17 @@
+.indent-info-container {
+  padding: 20rpx;
+}
+.info-title > text:first-child {
+  color: green;
+  font-size: 20px;
+}
+.info-number {
+  color: green;
+}
+.info-list > image {
+  width: 30px;
+  height: 30px;
+}
+.fs12 {
+  font-size: 12px;
+}

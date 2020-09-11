@@ -1,2 +1,6 @@
-<!--pages/indent/indent.wxml-->
-<text>pages/indent/indent.wxml</text>
+<!-- 导航栏 -->
+<navigation-bar title="订单" icon="home" img_source="/images/main.png"></navigation-bar>
+<!-- 订单内容区域 -->
+<view class="indent-container">
+  <indent-list indent="{{indent}}"></indent-list>
+</view>

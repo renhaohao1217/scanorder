@@ -1,0 +1,8 @@
+<!-- 导航栏 -->
+<navigation-bar title="我的任务"></navigation-bar>
+<!-- 我的任务内容区域 -->
+<view class="task-container">
+  <task-list></task-list>
+  <task-list></task-list>
+  <task-list></task-list>
+</view>

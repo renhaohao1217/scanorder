@@ -1,0 +1,21 @@
+<!-- 订单列表组件 -->
+<view class="indent-list" bindtap="info">
+  <view class="indent-title">
+    <text>{{indent.number}}</text>
+    <text>{{indent.classify}}</text>
+  </view>
+  <view class="indent-state">
+    <text>
+      <text class="inline">结账状态:</text>
+      <text class="fa5151 inline">{{indent.state}}</text>
+    </text>
+    <text>
+      <text class="inline">下单时长:</text>
+      <text class="fa5151 inline">{{indent.time}}</text>
+    </text>
+  </view>
+  <view class="indent-price">
+    <text>总价</text>
+    <text class="fa5151">￥{{indent.price}}</text>
+  </view>
+</view>

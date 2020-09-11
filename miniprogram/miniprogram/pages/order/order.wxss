@@ -1,3 +1,4 @@
+/* 容器 */
 .order-container {
   display: flex;
   justify-content: space-around;
@@ -11,10 +12,24 @@
   box-shadow: 0 0 20rpx #ccc;
   text-align: center;
 }
-.order-box image {
+.order-box > image {
   width: 200rpx;
   height: 200rpx;
 }
-.order-box text {
+.order-box > text {
   font-size: 36rpx;
+}
+
+/* 平板尺寸 */
+@media (min-width: 768px) {
+  .order-box {
+    width: 134rpx;
+  }
+  .order-box > image {
+    width: 134rpx;
+    height: 134rpx;
+  }
+  .order-box > text {
+    font-size: 24rpx;
+  }
 }

@@ -1,24 +1,21 @@
-// pages/indent/indent.js
+// pages/indent-info/indent-info.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    indent: {
-      number: '2',
-      classify: '桌号',
-      state: '代收款',
-      time: '50分钟前',
-      price: '422'
-    }
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const eventChannel = this.getOpenerEventChannel();
+    eventChannel.on('acceptDataFromOpenerPage', function (data) {
+      console.log(data.data)
+    })
   },
 
   /**

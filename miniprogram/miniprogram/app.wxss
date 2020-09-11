@@ -1,3 +1,17 @@
-.fa5151 {
-  color: #fa5151;
+.cf33 {
+  color: #f33;
+}
+.c245 {
+  color: rgb(245, 245, 245);
+}
+.button {
+  color: #fff;
+  background-color: #f33;
+}
+@media (min-width: 768px) {
+  .button {
+    height: 54rpx;
+    line-height: 44rpx;
+    font-size: 24rpx;
+  }
 }

@@ -2,13 +2,15 @@
 .classify-list {
   height: 100%;
   display: flex;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid rgb(245, 245, 245);
   box-sizing: border-box;
+  font-size: 32rpx;
 }
+/* 左边内容 */
 .container-left {
   width: 225rpx;
   height: 100%;
-  border-right: 1px solid #ccc;
+  border-right: 1px solid rgb(245, 245, 245);
   box-sizing: border-box;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -18,18 +20,14 @@
   padding: 20rpx;
 }
 .left-list + .left-list {
-  border-top: 1px solid #ccc;
-}
-.active {
-  background-color: #fff;
-  color: #fa5151;
+  border-top: 1px solid rgb(245, 245, 245);
 }
 .left-list .button {
   margin-top: 20rpx;
   display: flex;
   justify-content: space-around;
 }
-
+/* 右边内容 */
 .container-right {
   width: 525rpx;
   height: 100%;
@@ -43,7 +41,7 @@
   background-color: #fff;
 }
 .right-list + .right-list {
-  border-top: 1px solid #eee;
+  border-top: 1px solid rgb(245, 245, 245);
 }
 .right-list > image {
   width: 180rpx;
@@ -56,7 +54,7 @@
   align-items: center;
 }
 .right-list-content > .price {
-  color: rgb(250, 81, 81);
+  color: #f33;
 }
 .right-list-content .button {
   width: 200rpx;
@@ -66,15 +64,14 @@
 }
 .right-list-content .btn {
   display: inline-block;
-  width: 50rpx;
-  height: 50rpx;
-  line-height: 50rpx;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   font-size: 36rpx;
   text-align: center;
-  color: rgb(250, 81, 81);
+  color: #f33;
   border-radius: 50%;
-  box-shadow: 0 0 1px #ccc;
-  background-color: #eee;
+  box-shadow: 0 0 6rpx #ccc;
 }
 .right-list-content > text {
   margin-bottom: 20rpx;
@@ -83,7 +80,7 @@
   display: inline-block;
   width: 100%;
   padding: 60rpx;
-  border-top: 1px solid #eee;
+  border-top: 1px solid rgb(245, 245, 245);
   text-align: center;
   background-color: #fff;
   color: #ccc;
@@ -91,4 +88,21 @@
 .btn-icon {
   width: 50rpx;
   height: 50rpx;
+}
+.active {
+  background-color: #fff;
+  color: #f33;
+}
+
+/* 平板尺寸 */
+@media (min-width: 768px) {
+  /* 商品展示区域 */
+  .classify-list {
+    font-size: 24rpx;
+  }
+  .right-list-content .btn {
+    width: 50rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+  }
 }

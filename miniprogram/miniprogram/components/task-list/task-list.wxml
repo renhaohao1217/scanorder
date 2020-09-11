@@ -1,0 +1,55 @@
+<!-- 我的任务列表组件 -->
+<view class="task-list-container">
+  <!-- 标题 -->
+  <view class="task-title">
+    <view class="title-name">
+      <text class="fa5151">6号</text>
+      <text class="fs14">流水</text>
+    </view>
+    <text class="title-time fs14 c080">0分钟前</text>
+    <text class="title-nav fs14 c00f">查看订单></text>
+  </view>
+  <!-- 内容 -->
+  <view class="task-content">
+    <view class="content-list">
+      <view class="list-name c00f">北京烤鸭</view>
+      <view class="list-num fs14">
+        数量×
+        <text class="fa5151">2</text>
+      </view>
+      <view class="list-time c080 fs14">0分钟前</view>
+    </view>
+    <view class="content-list">
+      <view class="list-name c00f">北京烤鸭</view>
+      <view class="list-num fs14">
+        数量×
+        <text class="fa5151">2</text>
+      </view>
+      <view class="list-time c080 fs14">0分钟前</view>
+    </view>
+    <view class="content-list">
+      <view class="list-name c00f">北京烤鸭</view>
+      <view class="list-num fs14">
+        数量×
+        <text class="fa5151">2</text>
+      </view>
+      <view class="list-time c080 fs14">0分钟前</view>
+    </view>
+    <view class="content-list">
+      <view class="list-name c00f">北京烤鸭</view>
+      <view class="list-num fs14">
+        数量×
+        <text class="fa5151">2</text>
+      </view>
+      <view class="list-time c080 fs14">0分钟前</view>
+    </view>
+    <view class="content-list">
+      <view class="list-name c00f">北京烤鸭</view>
+      <view class="list-num fs14">
+        数量×
+        <text class="fa5151">2</text>
+      </view>
+      <view class="list-time c080 fs14">0分钟前</view>
+    </view>
+  </view>
+</view>

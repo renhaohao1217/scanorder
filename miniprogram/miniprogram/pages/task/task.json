@@ -1,6 +1,6 @@
 {
   "usingComponents": {
     "navigation-bar": "/components/navigation-bar/navigation-bar",
-    "indent-list": "/components/indent-list/indent-list"
+    "task-list": "/components/task-list/task-list"
   }
 }

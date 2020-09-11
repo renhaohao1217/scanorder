@@ -1,0 +1,35 @@
+/* 订单组件 */
+.indent-list {
+  width: 700rpx;
+  box-sizing: border-box;
+  padding: 40rpx 20rpx;
+  margin: 20rpx auto;
+  border-radius: 20rpx;
+  box-shadow: 0 0 20rpx #ccc;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+/* 订单编号 */
+.indent-title > text:first-child {
+  font-size: 24px;
+  margin-bottom: 20rpx;
+  color: green;
+}
+.indent-title > text:last-child {
+  font-size: 12px;
+}
+.indent-state {
+  width: 140px;
+}
+view > text:first-child {
+  margin-bottom: 40rpx;
+  display: block;
+}
+.fa5151 {
+  color: #fa5151;
+}
+.inline {
+  display: inline-block !important;
+  margin-bottom: 0;
+}

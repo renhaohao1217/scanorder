@@ -13,31 +13,20 @@ Component({
       'px'
   },
   properties: {
-    img_source: {
-      type: String,
-      value: '/images/main.png'
-    },
     title: {
       type: String,
       value: ''
     },
     icon: {
-      type: String,
-      value: 'home'
+      type: Boolean,
+      value: false
     }
   },
   methods: {
     back () {
-      if (this.properties.icon == 'home') {
-        wx.reLaunch({
-          url: '/pages/home/home'
-        })
-      } else {
-        wx.navigateBack({
-          delta: 1
-        })
-      }
-
+      wx.navigateBack({
+        delta: 1
+      })
     }
   }
 })

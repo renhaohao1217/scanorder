@@ -31,13 +31,15 @@ App({
     //   }
     // })
 
-    const { statusBarHeight, platform } = wx.getSystemInfoSync()
+    const { windowHeight, statusBarHeight, platform } = wx.getSystemInfoSync()
     const { top, height } = wx.getMenuButtonBoundingClientRect()
 
     // 状态栏高度
     wx.setStorageSync('statusBarHeight', statusBarHeight)
     // 胶囊按钮高度 一般是32 如果获取不到就使用32
     wx.setStorageSync('menuButtonHeight', height ? height : 32)
+    // 屏幕高度
+    wx.setStorageSync('windowHeight', windowHeight)
 
     // 判断胶囊按钮信息是否成功获取
     if (top && top !== 0 && height && height !== 0) {
