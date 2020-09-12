@@ -1,2 +1,33 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<!-- 导航栏 -->
+<navigation-bar></navigation-bar>
+<!-- 内容区域 -->
+<view class="home-container">
+  <!-- 商家信息 -->
+  <view class="home-shop" bindtap="skip_shop">
+    <image src="{{image}}"></image>
+    <view class="home-content">
+      <text>{{shop}}</text>
+      <text>用户名:{{username}}</text>
+    </view>
+    <image class="more" src="/images/more.png"></image>
+  </view>
+  <!-- home功能 -->
+  <!-- 报表 -->
+  <view class="home-features">
+    <image src="/images/report.png"></image>
+    <text>报表</text>
+    <image class="more" src="/images/more.png"></image>
+  </view>
+  <!-- 修改密码 -->
+  <view class="home-features" bindtap="update_pwd">
+    <image src="/images/password.png"></image>
+    <text>修改密码</text>
+    <image class="more" src="/images/more.png"></image>
+  </view>
+  <!-- 退出登录 -->
+  <view class="home-features" bindtap="exit">
+    <image src="/images/exit.png"></image>
+    <text>退出登录</text>
+    <image class="more" src="/images/more.png"></image>
+  </view>
+</view>

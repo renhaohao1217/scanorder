@@ -4,14 +4,29 @@
 .c245 {
   color: rgb(245, 245, 245);
 }
+/* 主题按钮 */
 .button {
   color: #fff;
   background-color: #f33;
+}
+/* 更多按钮 */
+.more {
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 50%;
+  transform: translateY(-50%);
 }
 @media (min-width: 768px) {
   .button {
     height: 54rpx;
     line-height: 44rpx;
     font-size: 24rpx;
+  }
+  /* 更多按钮 */
+  .more {
+    width: 40rpx;
+    height: 40rpx;
   }
 }

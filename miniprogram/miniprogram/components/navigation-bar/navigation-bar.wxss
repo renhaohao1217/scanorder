@@ -20,8 +20,6 @@
   margin-left: 10px;
   box-sizing: border-box;
   background-color: transparent;
-  border: 1px solid #ccc;
-  border-radius: 50%;
   z-index: 100;
 }
 .nav-img {

@@ -1,21 +1,19 @@
 {
   "pages": [
+    "pages/index/index",   
+    "pages/update_pwd/update_pwd",
+    "pages/home/home",
+    
+    "pages/userinfo/userinfo",    
+    "pages/register/register",
     "pages/menu/menu",
     "pages/order/order",
     "pages/business/business",
-     
-    "pages/index/index",
-    "pages/home/home", 
     "pages/task/task",
     "pages/indent-info/indent-info",
     "pages/indent/indent",
-    
-   
     "pages/standard/standard",
-    
-    
-    "pages/login/login",
-    "pages/register/register"
+    "pages/login/login"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -1,77 +1,54 @@
 // pages/login/login.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  // 页面的初始数据
   data: {
-    username: '',
-    password: ''
+    username: 'a11111',
+    password: 'a11111'
   },
-
-  /**
-   * 自定义方法
-   */
+  // 自定义方法
   input_model (event) {
-    let target = event.target.dataset.target;
+    let { type } = event.target.dataset;
     this.setData({
-      [target]: event.detail.value
+      [type]: event.detail.value
     })
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  login () {
+    let { username, password } = this.data;
+    const db = wx.cloud.database();
+    const _ = db.command;
+    db.collection('so_shop')
+      .where(_.or([
+        {
+          username: _.eq(username),
+          password: _.eq(password)
+        },
+        {
+          phone: _.eq(username),
+          password: _.eq(password)
+        }
+      ]))
+      .get({
+        success: res => {
+          if (!!res.data.length) {
+            // 将登录状态缓存到本地
+            let { _id } = res.data[0];
+            wx.setStorageSync('_id', _id)
+            wx.showToast({
+              title: '登录成功',
+              icon: 'none',
+              duration: 2000
+            })
+            wx.switchTab({
+              url: '/pages/home/home'
+            })
+          } else {
+            wx.showToast({
+              title: '账号或者密码错误',
+              icon: 'none',
+              duration: 2000,
+            })
+          }
+        }
+      })
   }
 })

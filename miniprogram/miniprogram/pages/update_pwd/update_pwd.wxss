@@ -1,0 +1,33 @@
+/* 容器 */
+.update-pwd-container {
+  padding: 40rpx;
+  font-size: 36rpx;
+}
+.update-pwd-container > view {
+  display: flex;
+  margin-bottom: 40rpx;
+}
+.update-pwd-container label {
+  width: 200rpx;
+}
+.update-pwd-container input {
+  width: 400rpx;
+}
+.update-pwd-container > button {
+  width: 100% !important;
+}
+.tips {
+  font-size: 28rpx;
+}
+
+/* 平板尺寸 */
+@media (min-width: 768px) {
+  /* 容器 */
+  .update-pwd-container {
+    padding: 40rpx;
+    font-size: 22rpx;
+  }
+  .tips {
+    font-size: 18rpx;
+  }
+}

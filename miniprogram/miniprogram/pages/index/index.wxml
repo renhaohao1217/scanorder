@@ -1,5 +1,8 @@
+<!-- 首页背景 -->
 <image class="index-background" src="cloud://zhima-zaczd.7a68-zhima-zaczd-1302082565/161831-1499674711c824.jpg"></image>
+<!-- 首页按钮 -->
 <view class="index-button">
-  <button type="primary">商家登录</button>
-  <button type="primary" plain="{{true}}">商家注册</button>
+  <button type="primary" plain="{{true}}" data-method="login" bindtap="skip">商家登录</button>
+  <button type="default" plain="{{true}}" data-method="register" bindtap="skip">商家注册</button>
+  <button type="warn" plain="{{true}}">扫码点餐</button>
 </view>

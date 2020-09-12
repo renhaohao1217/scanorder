@@ -1,0 +1,37 @@
+.userinfo-list {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40rpx;
+  position: relative;
+}
+.userinfo-list + .userinfo-list {
+  border-top: 1px solid rgb(245, 245, 245);
+}
+.userinfo-list > view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.userinfo-list > view > image:nth-child(2) {
+  width: 120rpx;
+  height: 120rpx;
+  padding-right: 20rpx;
+}
+.userinfo-list > view > input:nth-child(2) {
+  padding-right: 20rpx;
+  color: #696969;
+  text-align: right;
+  width: 420rpx;
+}
+
+/* 平板尺寸 */
+@media (min-width: 768px) {
+  .userinfo-list {
+    font-size: 22rpx;
+    padding: 30rpx 40rpx;
+  }
+  .userinfo-list > view > image:nth-child(2) {
+    width: 80rpx;
+    height: 80rpx;
+  }
+}

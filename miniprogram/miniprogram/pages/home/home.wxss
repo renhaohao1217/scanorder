@@ -1,1 +1,70 @@
-/* pages/home/home.wxss */
+Page {
+  background-color: rgb(245, 245, 245);
+}
+.home-container > view {
+  position: relative;
+}
+/* 商家信息 */
+.home-shop {
+  padding: 60rpx 40rpx;
+  display: flex;
+  background-color: #fff;
+}
+.home-shop > image:first-child {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+}
+.home-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.home-content > text:first-child {
+  font-size: 40rpx;
+}
+.home-content > text:last-child {
+  font-size: 28rpx;
+  color: #696969;
+}
+/* 功能区域 */
+.home-features {
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.home-features > image:first-child {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+}
+
+/* 平板尺寸 */
+@media (min-width: 768px) {
+  /* 商家信息 */
+  .home-shop {
+    padding: 40rpx 26rpx;
+  }
+  .home-shop > image:first-child {
+    width: 80rpx;
+    height: 80rpx;
+  }
+  .home-content > text:first-child {
+    font-size: 28rpx;
+  }
+  .home-content > text:last-child {
+    font-size: 18rpx;
+  }
+  /* 功能区域 */
+  .home-features {
+    padding: 20rpx;
+    margin-top: 14rpx;
+  }
+  .home-features > image:first-child {
+    width: 34rpx;
+    height: 34rpx;
+  }
+}
