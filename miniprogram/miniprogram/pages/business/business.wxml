@@ -1,5 +1,5 @@
 <!-- 导航栏 -->
-<navigation-bar icon="{{true}}" title="{{method}}"></navigation-bar>
+<navigation-bar icon="{{true}}" title="{{title}}"></navigation-bar>
 <!-- 点餐界面 -->
 <view class="order" style="{{'height:' + height}}">
   <!-- 商家信息 -->

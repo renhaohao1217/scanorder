@@ -17,10 +17,11 @@
   height: 120rpx;
   padding-right: 20rpx;
 }
-.userinfo-list > view > input:nth-child(2) {
+.userinfo-list > view > input:nth-child(2),
+.userinfo-list > view > view:nth-child(2) {
   padding-right: 20rpx;
   color: #696969;
-  text-align: right;
+  text-align: left;
   width: 420rpx;
 }
 

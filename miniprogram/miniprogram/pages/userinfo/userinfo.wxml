@@ -34,10 +34,22 @@
     </view>
     <image class="more" src="/images/more.png"></image>
   </view>
-  <!-- 店铺地址 -->
+  <!-- 地区信息 -->
   <view class="userinfo-list">
     <view>
-      <text>店铺地址</text>
+      <text>地区信息</text>
+      <view class="section">
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+          <view class="picker">{{region[0]}} {{region[1]}} {{region[2]}}</view>
+        </picker>
+      </view>
+    </view>
+    <image class="more" src="/images/location.png" bindtap="location"></image>
+  </view>
+  <!-- 详细地址 -->
+  <view class="userinfo-list">
+    <view>
+      <text>详细地址</text>
       <input value="{{address}}" type="text" bindinput="input_model" bindblur="check" data-target="address"></input>
     </view>
     <image class="more" src="/images/more.png"></image>

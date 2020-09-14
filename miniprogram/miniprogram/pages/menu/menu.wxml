@@ -1,4 +1,4 @@
 <navigation-bar title="菜单"></navigation-bar>
 <view class="menu-container" style="{{'height:' + height}}">
-  <classify-list source="waiter" result="{{result}}" bindmyevent="myevent"></classify-list>
+  <classify-list source="waiter" classify_arr="{{classify_arr}}" goods_arr="{{goods_arr}}" bindmyevent="myevent"></classify-list>
 </view>

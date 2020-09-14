@@ -1,22 +1,26 @@
 <!-- 导航栏 -->
-<navigation-bar title="北京烤鸭" method="back" img_source="/images/back-black.png"></navigation-bar>
+<navigation-bar title="{{title}}" icon="{{true}}"></navigation-bar>
 <!-- 规格内容区域 -->
 <view class="standard-container">
   <!-- 商品logo -->
   <view class="standard-logo">
-    <image class="logo-image" src="/images/timg.jfif" bindtap="choose"></image>
+    <image class="logo-image" src="{{image}}" bindtap="choose"></image>
     <text class="logo-tips">点击更换菜品图片</text>
   </view>
+  <!-- 商品名称 -->
   <text>名称:</text>
-  <input value="{{goods.name}}" type="text" placeholder="请输入商品名称" bindinput="update" data-key="name"></input>
+  <input value="{{title}}" type="text" placeholder="请输入商品名称" bindblur="update" data-key="title"></input>
+  <!-- 商品价格 -->
   <text>价格:</text>
-  <input value="{{goods.price}}" type="number" placeholder="请输入商品价格" bindinput="update" data-key="price"></input>
+  <input value="{{price}}" type="number" placeholder="请输入商品价格" bindinput="update" data-key="price"></input>
+  <!-- 所属后厨 -->
   <text>所属后厨:</text>
-  <input value="{{goods.classify}}" type="text" placeholder="请输入所属后厨" bindinput="update" data-key="classify"></input>
-  <text>添加规格:</text>
-  <button type="primary">+添加规格</button>
+  <input value="{{cook}}" type="text" placeholder="请输入所属后厨" bindinput="update" data-key="cook"></input>
+  <!-- 商品描述 -->
   <text>描述:</text>
-  <textarea value="{{goods.info}}" type="text" placeholder="请输入商品描述" bindinput="update" data-key="info"></textarea>
+  <textarea value="{{description}}" type="text" placeholder="请输入商品描述" bindinput="update" data-key="description"></textarea>
+  <!-- 是否售馨 -->
   <text class="fa5151">售馨:</text>
-  <switch checked="{{goods.zero}}" type="switch" bindchange="update" data-key="zero"></switch>
+  <switch checked="{{sale}}" type="switch" bindchange="update" data-key="sale"></switch>
+  <button type="primary" bindtap="save">保存修改</button>
 </view>

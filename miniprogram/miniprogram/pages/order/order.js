@@ -7,10 +7,7 @@ Page({
   order (event) {
     let { method } = event.currentTarget.dataset;
     wx.navigateTo({
-      url: '/pages/business/business',
-      success: res => {
-        res.eventChannel.emit('acceptDataFromOpenerPage', { method })
-      }
+      url: `/pages/business/business?method=${method}`
     })
   }
 })

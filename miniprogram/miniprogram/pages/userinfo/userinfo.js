@@ -6,7 +6,8 @@ Page({
     phone: '',
     shop: '',
     username: '',
-    _id: ''
+    _id: '',
+    region: []
   },
   // 自定义方法
   // 更新头像方法
@@ -64,7 +65,7 @@ Page({
       username: '用户名格式不正确',
       phone: '手机号格式不正确',
       shop: '店铺名称不能为空',
-      address: '店铺地址不能为空'
+      address: '详细地址不能为空'
     }
     // 如果格式不正确，返回函数
     if (hash[target]) {
@@ -131,14 +132,106 @@ Page({
         }
       })
   },
+  // 获取定位信息
+  location () {
+    // 引入SDK核心类
+    const QQMapWX = require('../../qqmap-wx-jssdk1.0/qqmap-wx-jssdk.js')
+    // 实例化API核心类
+    const wxMap = new QQMapWX({
+      key: 'DJ4BZ-JPUW5-WTUII-QJ6JK-I4HE7-VJFSJ'
+    });
+    //经纬度逆解析开始
+    function reverseGeoCoder (lat, lng) {
+      var _this = this
+      wxMap.reverseGeocoder({
+        location: {
+          // 你的经纬度
+          latitude: lat,
+          longitude: lng,
+        },
+        success: function (res) {
+          console.log(res);
+          _this.setData({
+            currenAddress: res.result.address
+          })
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      })
+    }
+
+
+    console.log(1);
+    wx.getLocation({
+      type: 'wgs84',
+      success (res) {
+        // console.log(res);
+        reverseGeoCoder(res.latitude, res.longitude)
+        const latitude = res.latitude
+        const longitude = res.longitude
+        const speed = res.speed
+        const accuracy = res.accuracy
+      }
+    })
+  },
+  // 地址选择器
+  bindRegionChange (e) {
+    this.setData({
+      region: e.detail.value
+    })
+    this.update('region');
+  },
+  // 获取定位信息
+  location () {
+    let _this = this;
+    // 引入SDK核心类
+    const QQMapWX = require('../../qqmap-wx-jssdk1.0/qqmap-wx-jssdk.js')
+    // 实例化API核心类
+    const wxMap = new QQMapWX({
+      key: 'DJ4BZ-JPUW5-WTUII-QJ6JK-I4HE7-VJFSJ'
+    });
+    // 获取当前的位置
+    wx.getLocation({
+      type: 'wgs84',
+      success (res) {
+        //经纬度逆解析开始
+        wxMap.reverseGeocoder({
+          location: {
+            // 你的经纬度
+            latitude: res.latitude,
+            longitude: res.longitude,
+          },
+          success: res => {
+            _this.setData({
+              region: _this.transform(res.result.address)
+            })
+            _this.update('region')
+          }
+        })
+      }
+    })
+  },
+  // 转换地区信息格式
+  transform (str) {
+    let reg = /[市省区州县0-9A-Za-z]/g;
+    let index1 = reg.exec(str).index + 1;
+    let index2 = reg.exec(str).index + 1;
+    let index3 = reg.exec(str).index + 1;
+    return [
+      str.slice(0, index1),
+      str.slice(index1, index2),
+      str.slice(index2, index3)
+    ];
+  },
   //options(Object)
   onLoad: function (options) {
     // 获取从home组件传递过来的数据
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('acceptDataFromOpenerPage', data => {
-      let { address, image, phone, shop, username, _id } = data.data;
+      let { address, image, phone, shop, username, _id, region } = data.data;
       this.setData({
-        address, image, phone, shop, username, _id
+        address, image, phone, shop, username, _id, region
       })
     })
   }

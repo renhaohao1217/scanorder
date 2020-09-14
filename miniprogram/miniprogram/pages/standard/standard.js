@@ -1,64 +1,118 @@
 //Page Object
 Page({
   data: {
-    goods: {
-      image: '',
-      name: '',
-      price: '',
-      classify: '',
-      info: '',
-      zero: false
-    }
+    _id: '',
+    image: '',
+    title: '',
+    price: '',
+    cook: '',
+    description: '',
+    classify_id: '',
+    sale: false
   },
-
+  // 更新图片的方法
   choose () {
     wx.chooseImage({
       count: 1,
-      success: res => {
-        // res.tempFiles[0].path
-      }
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: chooseResult => {
+        // 将图片上传至云存储空间
+        wx.cloud.uploadFile({
+          // 指定上传到的云路径
+          cloudPath: `${Date.now()}-${parseInt(Math.random() * 65535)}.png`,
+          // 指定要上传的文件的小程序临时文件路径
+          filePath: chooseResult.tempFilePaths[0],
+          // 成功回调
+          success: res => {
+            this.setData({
+              image: res.fileID
+            })
+          },
+        })
+      },
     })
   },
+  // 更新其他数据
   update (event) {
-    console.log(event);
     let { key } = event.target.dataset;
     let value = event.detail.value;
-    let goods = this.data.goods;
-    goods[key] = value;
     this.setData({
-      goods
+      [key]: value
     })
   },
-  //options(Object)
-  onLoad: function (options) {
-
+  // 保存修改
+  save () {
+    const db = wx.cloud.database();
+    const _ = db.command;
+    let { _id, image, title, price, cook, description, sale, classify_id } = this.data;
+    // 将价格保留两位小数
+    price = parseFloat(price).toFixed(2);
+    // 如果没有_id,则为添加新的商品
+    if (!_id) {
+      db.collection('so_goods')
+        .add({
+          data: {
+            image, title, price, cook, description, sale, classify_id,
+            shop_id: wx.getStorageSync('_id'),
+            time: Date.now()
+          }
+        })
+        .then(() => {
+          wx.showToast({
+            title: '添加成功',
+            icon: 'none',
+            duration: 2000
+          })
+          // 返回上一级
+          wx.navigateBack({
+            delta: 1
+          });
+        })
+    } else { // 如果存在_id，则为更新商品
+      db.collection('so_goods')
+        .doc(_id)
+        .update({
+          data: {
+            image, title, price, cook, description, sale
+          }
+        })
+        .then(() => {
+          wx.showToast({
+            title: '修改成功',
+            icon: 'none',
+            duration: 2000
+          })
+          // 返回上一级
+          wx.navigateBack({
+            delta: 1
+          });
+        })
+    }
   },
-  onReady: function () {
-
+  // 获取路由跳转传进来的参数
+  onLoad (options) {
+    let { classify_id, _id } = options;
+    this.setData({
+      classify_id,
+      _id
+    })
+    if (_id) {
+      const db = wx.cloud.database();
+      const _ = db.command;
+      db.collection('so_goods')
+        .doc(_id)
+        .get()
+        .then(res => {
+          let { image, title, price, cook, description, sale } = res.data;
+          this.setData({
+            image, title, price, cook, description, sale
+          })
+        })
+    }
   },
-  onShow: function () {
 
-  },
-  onHide: function () {
-
-  },
-  onUnload: function () {
-
-  },
-  onPullDownRefresh: function () {
-
-  },
-  onReachBottom: function () {
-
-  },
-  onShareAppMessage: function () {
-
-  },
-  onPageScroll: function () {
-
-  },
-  //item(index,pagePath,text)
-  onTabItemTap: function (item) {
-
+  blur (e) {
+    console.log(e);
   }
 });

@@ -6,49 +6,42 @@ Page({
       wx.getStorageSync('statusBarHeight') -
       wx.getStorageSync('navigationBarHeight') +
       'px',
-    result: [
-      {
-        title: '商品分类',
-        child: [
-          { id: '商品分类', title: '菜品名称', price: 66.66, num: 0 },
-          { id: '商品分类', title: '菜品名称', price: 66.66, num: 0 },
-          { id: '商品分类', title: '菜品名称', price: 66.66, num: 0 },
-          { id: '商品分类', title: '菜品名称', price: 66.66, num: 0 },
-          { id: '商品分类', title: '菜品名称', price: 66.66, num: 0 },
-          { id: '商品分类', title: '菜品名称', price: 66.66, num: 0 },
-        ]
-      },
-      {
-        title: '饮品',
-        child: [
-          { id: '饮品', title: '饮品', price: 66.66, num: 0 },
-          { id: '饮品', title: '饮品', price: 66.66, num: 0 },
-          { id: '饮品', title: '饮品', price: 66.66, num: 0 },
-          { id: '饮品', title: '饮品', price: 66.66, num: 0 },
-          { id: '饮品', title: '饮品', price: 66.66, num: 0 },
-          { id: '饮品', title: '饮品', price: 66.66, num: 0 },
-        ]
-      },
-      {
-        title: '饮品2',
-        child: [
-          { id: '饮品2', title: '饮品2', price: 66.66, num: 0 },
-          { id: '饮品2', title: '饮品2', price: 66.66, num: 0 },
-          { id: '饮品2', title: '饮品2', price: 66.66, num: 0 },
-          { id: '饮品2', title: '饮品2', price: 66.66, num: 0 },
-          { id: '饮品2', title: '饮品2', price: 66.66, num: 0 },
-          { id: '饮品2', title: '饮品2', price: 66.66, num: 0 },
-        ]
-      }
-    ]
+    classify_arr: [],
+    goods_arr: []
   },
-  // 自定是函数
+  // 自定义函数
   myevent (event) {
-    console.log(event);
     let { num, sum } = event.detail;
     this.setData({
       num,
       sum
     })
+  },
+  onShow () {
+    const db = wx.cloud.database();
+    const _ = db.command;
+    db.collection('so_classify')
+      .where({
+        shop_id: _.eq(wx.getStorageSync("_id"))
+      })
+      .orderBy('time', 'asc')
+      .get()
+      .then(res => {
+        this.setData({
+          classify_arr: res.data
+        })
+        // 获取分类对应的商品
+        !!res.data.length && db.collection('so_goods')
+          .where({
+            classify_id: _.eq(res.data[0]._id)
+          })
+          .orderBy('time', 'asc')
+          .get()
+          .then(res => {
+            this.setData({
+              goods_arr: res.data
+            })
+          })
+      })
   }
 })

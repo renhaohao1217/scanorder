@@ -1,7 +1,8 @@
 Page({
   // 页面的初始数据
   data: {
-    method: '桌位号点餐',
+    title: '桌位号点餐',
+    method: 'table',
     // 导航栏和状态栏高度
     height:
       wx.getStorageSync('windowHeight') -
@@ -59,9 +60,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const eventChannel = this.getOpenerEventChannel();
-    eventChannel.on('acceptDataFromOpenerPage', function (data) {
-      // console.log(data.method)
+    let { method } = options;
+    let { title } = this.data;
+    if (method == 'serial') {
+      title = '流水号点餐'
+    }
+    this.setData({
+      method,
+      title
     })
   }
 })

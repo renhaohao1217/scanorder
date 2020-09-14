@@ -6,6 +6,7 @@ Page({
     shop: '',
     username: '',
     image: '',
+    region: [],
     _id: ''
   },
   // 自定义方法
@@ -13,9 +14,9 @@ Page({
     wx.navigateTo({
       url: '/pages/userinfo/userinfo',
       success: res => {
-        let { address, phone, shop, username, image, _id } = this.data;
+        let { address, phone, shop, username, image, _id, region } = this.data;
         let data = {
-          address, phone, shop, username, image, _id
+          address, phone, shop, username, image, _id, region
         }
         res.eventChannel.emit('acceptDataFromOpenerPage', { data })
       }
@@ -35,24 +36,25 @@ Page({
             phone: true,
             shop: true,
             username: true,
-            image: true
+            image: true,
+            region: true,
           })
           .where({
             _id: _.eq(_id)
           })
-          .get({
-            success: res => {
-              let { address, phone, shop, username, _id } = res.data[0];
-              let image = res.data[0].image || '/images/logo.svg'
-              this.setData({
-                address,
-                phone,
-                shop,
-                username,
-                image,
-                _id
-              })
-            }
+          .get()
+          .then(res => {
+            let { address, phone, shop, username, _id, region } = res.data[0];
+            let image = res.data[0].image || '/images/logo.svg'
+            this.setData({
+              address,
+              phone,
+              shop,
+              username,
+              image,
+              _id,
+              region
+            })
           })
       }
     });

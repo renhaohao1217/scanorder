@@ -4,7 +4,7 @@
 <view class="order-container">
   <view class="order-box" data-method="table" bindtap="order">
     <image src="/images/table.svg"></image>
-    <text>桌号点餐</text>
+    <text>桌位号点餐</text>
   </view>
   <view class="order-box" data-method="serial" bindtap="order">
     <image src="/images/serial.svg"></image>

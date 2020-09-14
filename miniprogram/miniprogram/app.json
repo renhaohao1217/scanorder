@@ -1,13 +1,12 @@
 {
   "pages": [
-    "pages/index/index",   
-    "pages/update_pwd/update_pwd",
-    "pages/home/home",
-    
-    "pages/userinfo/userinfo",    
-    "pages/register/register",
     "pages/menu/menu",
     "pages/order/order",
+    "pages/index/index",
+    "pages/userinfo/userinfo",
+    "pages/home/home",
+    "pages/update_pwd/update_pwd",  
+    "pages/register/register",  
     "pages/business/business",
     "pages/task/task",
     "pages/indent-info/indent-info",
@@ -55,6 +54,11 @@
         "selectedIconPath": "./images/home_a.png"
       }
     ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
