@@ -39,7 +39,7 @@ Page({
               duration: 2000
             })
             wx.switchTab({
-              url: '/pages/home/home'
+              url: '/pages/order/order'
             })
           } else {
             wx.showToast({

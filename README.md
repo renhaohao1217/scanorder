@@ -1,20 +1,23 @@
-# scanorder
+# scanorder(扫码点餐)
 
 > github : https://github.com/renhaohao1217/scanorder.git
 
-## 1 数据库设计
+## 微信小程序端
+
+### 1 数据库设计
 
 > 非关系型数据库：MongoDB
 
-### 1.1 集合(collection)清单
+#### 1.1 集合(collection)清单
 
 | 集合名      | 描述                             | 所属模块                                           |
 | ----------- | -------------------------------- | -------------------------------------------------- |
 | so_shop     | 商家集合，记载注册后的商家信息   | 基础模块<br />个人中心<br />点餐模块<br />菜单模块 |
 | so_classify | 商品分类集合，记载商品的分类信息 | 点餐模块<br />菜单模块                             |
 | so_goods    | 商品信息集合，记载商品的详细信息 | 点餐模块<br />菜单模块                             |
+| so_cart     | 购物车集合，记载用户的购物车信息 | 点餐模块                                           |
 
-### 1.2 商家信息集合(so_shop)
+#### 1.2 商家信息集合(so_shop)
 
 | 字段名称 | 类型   | 字段描述         |
 | -------- | ------ | ---------------- |
@@ -27,7 +30,7 @@
 | address  | String | 商家店铺地址     |
 | image    | String | 商家头像         |
 
-### 1.3 商品分类集合(so_classify)
+#### 1.3 商品分类集合(so_classify)
 
 | 字段名称 | 类型   | 字段描述           |
 | -------- | ------ | ------------------ |
@@ -37,7 +40,7 @@
 | shop_id  | String | 商家id             |
 | time     | String | 用来对分类进行排序 |
 
-### 1.4 商品信息集合(so_goods)
+#### 1.4 商品信息集合(so_goods)
 
 | 字段名称    | 类型    | 字段描述            |
 | ----------- | ------- | ------------------- |
@@ -52,6 +55,92 @@
 | shop_id     | String  | 商家id              |
 | classify_id | String  | 商品分类id          |
 | time        | String  | 用来对商品进行排序  |
+
+#### 1.5 购物车集合(so_cart)
+
+| 字段名称 | 类型   | 字段描述           |
+| -------- | ------ | ------------------ |
+| _id      | String | 唯一标志一条记录   |
+| _openid  | String | 标志记录的创建者   |
+| amount   | String | 记录单件商品的数量 |
+| goods_id | String | 商品id             |
+
+### 2 云函数
+
+```js
+// 调用云函数
+wx.cloud.callFunction({
+    name:'云函数名称',
+    data:{
+        // 云函数的参数对象
+    },
+    success:res=>{
+        
+    }
+})
+```
+
+#### 2.1 获取openid
+
+云函数名称：getOpenid
+
+接收数据：
+
+```js
+success:res=>{
+    // 接收数据
+    res.result.openid
+}
+```
+
+#### 2.2 商品信息集合(so_goods)和购物车集合(so_cart)联表查询
+
+云函数名称：lookup
+
+请求参数说明：
+
+| 名称         | 类型   | 说明                             |
+| ------------ | ------ | -------------------------------- |
+| collection   | String | 要查询的集合名称                 |
+| from         | String | 要进行连接的另一个集合的名字     |
+| localField   | String | 输入记录的要进行相等匹配的字段   |
+| foreignField | String | 被连接集合的要进行相等匹配的字段 |
+| as           | String | 输出的数组字段名                 |
+| match        | Object | 筛选条件                         |
+
+接收数据：
+
+```js
+success:res=>{
+    // 接收数据
+    console.log(res.result.list)
+}
+```
+
+#### 2.3 购物车集合(so_cart)和商品信息集合(so_goods)联表查询
+
+云函数名称：lookup_cart
+
+请求参数说明：
+
+| 名称         | 类型   | 说明                             |
+| ------------ | ------ | -------------------------------- |
+| collection   | String | 要查询的集合名称                 |
+| from         | String | 要进行连接的另一个集合的名字     |
+| localField   | String | 输入记录的要进行相等匹配的字段   |
+| foreignField | String | 被连接集合的要进行相等匹配的字段 |
+| as           | String | 输出的数组字段名                 |
+
+接收数据：
+
+```js
+success:res=>{
+    // 接收数据
+    res.result.list
+}
+```
+
+
 
 
 

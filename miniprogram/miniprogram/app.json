@@ -1,17 +1,17 @@
 {
   "pages": [
+    "pages/business/business",
+    "pages/indent-info/indent-info",
+    "pages/standard/standard",
+    "pages/indent/indent",
+    "pages/task/task",
+    "pages/index/index", 
+    "pages/order/order", 
     "pages/menu/menu",
-    "pages/order/order",
-    "pages/index/index",
     "pages/userinfo/userinfo",
     "pages/home/home",
     "pages/update_pwd/update_pwd",  
     "pages/register/register",  
-    "pages/business/business",
-    "pages/task/task",
-    "pages/indent-info/indent-info",
-    "pages/indent/indent",
-    "pages/standard/standard",
     "pages/login/login"
   ],
   "window": {

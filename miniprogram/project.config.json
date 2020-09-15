@@ -24,7 +24,7 @@
 	},
 	"appid": "wx0896c0d43788f34a",
 	"projectname": "miniprogram",
-	"libVersion": "2.8.1",
+	"libVersion": "2.12.2",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {

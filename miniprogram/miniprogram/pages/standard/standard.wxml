@@ -5,7 +5,7 @@
   <!-- 商品logo -->
   <view class="standard-logo">
     <image class="logo-image" src="{{image}}" bindtap="choose"></image>
-    <text class="logo-tips">点击更换菜品图片</text>
+    <text class="logo-tips">点击更换商品图片</text>
   </view>
   <!-- 商品名称 -->
   <text>名称:</text>

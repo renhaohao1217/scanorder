@@ -19,10 +19,6 @@ Component({
     hidden: true,
     classify: '',
     active: 0,
-    classify_down: '/images/down.png',
-    classify_up: '/images/up.png',
-    goods_down: '/images/down.png',
-    goods_up: '/images/up.png',
     num: 0,
     sum: 0
   },
@@ -41,18 +37,25 @@ Component({
       const db = wx.cloud.database();
       const _ = db.command;
       // 获取分类对应的商品
-      db.collection('so_goods')
-        .where({
-          classify_id: _.eq(classify_arr[index]._id)
-        })
-        .orderBy('time', 'asc')
-        .get()
-        .then(res => {
+      wx.cloud.callFunction({
+        name: 'lookup',
+        data: {
+          collection: 'so_goods',
+          from: 'so_cart',
+          localField: '_id',
+          foreignField: 'goods_id',
+          as: 'cartList',
+          match: {
+            classify_id: classify_arr[index]._id
+          }
+        },
+        success: res => {
           this.setData({
-            goods_arr: res.data,
+            goods_arr: res.result.list,
             active: index
           })
-        })
+        }
+      })
     },
     // 展示添加类名的输入框 / 跳转到添加商品的界面
     increase (event) {
@@ -78,26 +81,83 @@ Component({
     },
     // 计算购物车
     calc (event) {
+      const db = wx.cloud.database();
+      const _ = db.command;
       let { count, index } = event.target.dataset;
-      let results = this.data.results;
-      if (count == '-' && results[index].num > 0) {
-        results[index].num--;
-        this.data.num--;
-        this.data.sum -= results[index].price;
+      let { goods_arr } = this.data;
+      // 数量减
+      if (count == '-' && !!goods_arr[index].cartList.length) {
+        goods_arr[index].cartList[0].amount--;
+        // 更新数据库
+        db.collection('so_cart')
+          .where({
+            goods_id: _.eq(goods_arr[index]._id)
+          })
+          .update({
+            data: {
+              amount: goods_arr[index].cartList[0].amount
+            }
+          })
+        // 如果数量为0，则从数据库中删除
+        if (goods_arr[index].cartList[0].amount == 0) {
+          goods_arr[index].cartList = [];
+          db.collection('so_cart')
+            .where({
+              goods_id: _.eq(goods_arr[index]._id)
+            })
+            .remove()
+            .then(() => {
+              // 获取购物车的信息
+              this.lookup();
+            })
+        }
+        // 更新数据
+        this.setData({
+          goods_arr
+        })
       }
-      if (count == '+') {
-        results[index].num++;
-        this.data.num++;
-        this.data.sum += results[index].price;
+      // 数量加，如果之前存在
+      if (count == '+' && !!goods_arr[index].cartList.length) {
+        goods_arr[index].cartList[0].amount++;
+        // 更新数据库
+        db.collection('so_cart')
+          .where({
+            goods_id: _.eq(goods_arr[index]._id)
+          })
+          .update({
+            data: {
+              amount: goods_arr[index].cartList[0].amount
+            }
+          })
+          .then(() => {
+            // 获取购物车的信息
+            this.lookup();
+          })
+        // 更新数据
+        this.setData({
+          goods_arr
+        })
       }
-      this.setData({
-        results
-      })
-      let myEventDetail = {
-        num: this.data.num,
-        sum: this.data.sum.toFixed(2)
+      // 数量加，之前不存在
+      if (count == '+' && !goods_arr[index].cartList.length) {
+        goods_arr[index].cartList.push({
+          amount: 1
+        })
+        this.setData({
+          goods_arr
+        })
+        db.collection('so_cart')
+          .add({
+            data: {
+              amount: 1,
+              goods_id: goods_arr[index]._id
+            }
+          })
+          .then(() => {
+            // 获取购物车的信息
+            this.lookup();
+          })
       }
-      this.triggerEvent('myevent', myEventDetail)
     },
     // 取消添加类名
     minus () {
@@ -185,6 +245,36 @@ Component({
         }
       });
     },
+    // 获取购物车的信息
+    lookup () {
+      wx.cloud.callFunction({
+        name: 'lookup_cart',
+        data: {
+          collection: 'so_cart',
+          from: 'so_goods',
+          localField: 'goods_id',
+          foreignField: '_id',
+          as: 'goodsList'
+        },
+        success: res => {
+          let num = 0, sum = 0;
+          for (let item of res.result.list) {
+            num += item.amount;
+            sum += item.amount * item.goodsList[0].price
+          }
+          this.setData({
+            cart_arr: res.result.list,
+            num,
+            sum
+          })
+          let myEventDetail = {
+            num: this.data.num,
+            sum: this.data.sum.toFixed(2)
+          }
+          this.triggerEvent('myevent', myEventDetail)
+        }
+      })
+    },
     // 更新商品信息
     update (event) {
       let { index } = event.currentTarget.dataset;
@@ -204,9 +294,21 @@ Component({
       let distance = direction == 'down' ? 1 : -1;
       let flag = direction == 'down' ? index < data[type].length - 1 : index >= 1;
       if (flag) {
+        // 获取当前选中的索引
+        let active = data.active;
+        // 如果当前选中的索引将要进行移动，向上索引-1，向下索引+1
+        if (active == index) {
+          active += distance;
+        } else if (active == index - 1 && distance == -1) { // 如果当前索引在要移动的上方，索引+1
+          active++;
+        } else if (active == index + 1 && distance == 1) {
+          active--;
+        }
+        // 交换两个数组的位置
         [data[type][index], data[type][index + distance]] = [data[type][index + distance], data[type][index]];
         this.setData({
-          [type]: data[type]
+          [type]: data[type],
+          active
         })
         const db = wx.cloud.database();
         const _ = db.command;

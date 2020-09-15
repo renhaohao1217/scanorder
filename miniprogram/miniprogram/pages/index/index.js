@@ -9,10 +9,6 @@ Page({
     let { method } = event.target.dataset;
     wx.navigateTo({
       url: `/pages/${method}/${method}`,
-      success: res => {
-        console.log(res);
-      }
     })
-    // console.log(event);
   }
 });

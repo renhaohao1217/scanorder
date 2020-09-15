@@ -17,7 +17,7 @@ Page({
       sum
     })
   },
-  onShow () {
+  onLoad () {
     const db = wx.cloud.database();
     const _ = db.command;
     db.collection('so_classify')
