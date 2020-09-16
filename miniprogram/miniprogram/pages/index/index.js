@@ -10,5 +10,18 @@ Page({
     wx.navigateTo({
       url: `/pages/${method}/${method}`,
     })
+  },
+  // 调用扫码
+  scan () {
+    // 只允许从相机扫码
+    wx.scanCode({
+      onlyFromCamera: true,
+      success: res => {
+        console.log(res);
+        wx.navigateTo({
+          url: res.result
+        })
+      }
+    })
   }
 });

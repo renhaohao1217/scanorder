@@ -19,7 +19,6 @@
 .tips {
   font-size: 28rpx;
 }
-
 /* 平板尺寸 */
 @media (min-width: 768px) {
   /* 容器 */

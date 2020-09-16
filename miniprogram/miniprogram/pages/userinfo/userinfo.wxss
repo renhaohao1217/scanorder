@@ -24,6 +24,11 @@
   text-align: left;
   width: 420rpx;
 }
+/* 保存修改的按钮 */
+.userinfo-container > button {
+  width: 720rpx !important;
+  margin-top: 10rpx;
+}
 
 /* 平板尺寸 */
 @media (min-width: 768px) {
@@ -34,5 +39,8 @@
   .userinfo-list > view > image:nth-child(2) {
     width: 80rpx;
     height: 80rpx;
+  }
+  .userinfo-container > button {
+    font-size: 20rpx;
   }
 }

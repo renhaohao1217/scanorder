@@ -7,22 +7,22 @@
     <label for="prevpassword">
       <text>原密码</text>
     </label>
-    <input id="prevpassword" value="{{prevpassword}}" type="text" password="{{true}}" placeholder="填写原密码" bindinput="input_model" data-target="prevpassword" bindblur="check"></input>
+    <input id="prevpassword" value="{{prevpassword}}" type="text" password="{{true}}" placeholder="填写原密码" data-target="prevpassword" bindblur="check"></input>
   </view>
   <!-- 新密码 -->
   <view>
     <label for="password">
       <text>新密码</text>
     </label>
-    <input id="password" value="{{password}}" type="text" password="{{true}}" placeholder="填写新密码" bindinput="input_model" data-target="password" bindblur="check"></input>
+    <input id="password" value="{{password}}" type="text" password="{{true}}" placeholder="填写新密码" data-target="password" bindblur="check"></input>
   </view>
   <!-- 确认密码 -->
   <view>
     <label for="repassword">
       <text>确认密码</text>
     </label>
-    <input id="repassword" value="{{repassword}}" type="text" password="{{true}}" placeholder="再次确认密码" bindinput="input_model" data-target="repassword" bindblur="check"></input>
+    <input id="repassword" value="{{repassword}}" type="text" password="{{true}}" placeholder="再次确认密码" data-target="repassword" bindblur="check"></input>
   </view>
   <view class="tips">密码必须是6-20位字母,数字, _ , -</view>
-  <button type="primary" bindtap="submit">确认</button>
+  <button type="primary" bindtap="submit">保存修改</button>
 </view>

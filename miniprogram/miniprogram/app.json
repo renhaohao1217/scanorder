@@ -1,16 +1,22 @@
 {
   "pages": [
+    "pages/business/business",
+
+    "pages/home/home",
+    "pages/userinfo/userinfo",
+    "pages/update_pwd/update_pwd",  
+    "pages/order/order", 
+ 
+
     "pages/index/index", 
     "pages/task/task",
     "pages/indent/indent",
     "pages/indent-info/indent-info", 
-    "pages/business/business",
+    
     "pages/standard/standard",
-    "pages/order/order", 
+    
     "pages/menu/menu",
-    "pages/userinfo/userinfo",
-    "pages/home/home",
-    "pages/update_pwd/update_pwd",  
+  
     "pages/register/register",  
     "pages/login/login"
   ],
@@ -18,7 +24,6 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "scanorder",
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
   },

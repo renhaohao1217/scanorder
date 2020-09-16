@@ -135,6 +135,9 @@
 .cart-list > view > view > text:nth-child(2) {
   padding: 0 10rpx;
 }
+.button {
+  width: 360rpx !important;
+}
 
 /* 平板尺寸 */
 @media (min-width: 768px) {

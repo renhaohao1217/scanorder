@@ -9,19 +9,6 @@ Page({
     region: [],
     _id: ''
   },
-  // 自定义方法
-  skip_shop () {
-    wx.navigateTo({
-      url: '/pages/userinfo/userinfo',
-      success: res => {
-        let { address, phone, shop, username, image, _id, region } = this.data;
-        let data = {
-          address, phone, shop, username, image, _id, region
-        }
-        res.eventChannel.emit('acceptDataFromOpenerPage', { data })
-      }
-    });
-  },
   // 初始化获取数据
   init () {
     wx.getStorage({
@@ -59,17 +46,24 @@ Page({
       }
     });
   },
-  // 修改密码
-  update_pwd () {
+  // 用户详细信息
+  skip_shop () {
     wx.navigateTo({
-      url: '/pages/update_pwd/update_pwd',
+      url: '/pages/userinfo/userinfo',
       success: res => {
-        let { _id } = this.data;
+        let { address, phone, shop, username, image, _id, region } = this.data;
         let data = {
-          _id
+          address, phone, shop, username, image, _id, region
         }
         res.eventChannel.emit('acceptDataFromOpenerPage', { data })
       }
+    });
+  },
+  // 修改密码
+  update_pwd () {
+    let { _id } = this.data;
+    wx.navigateTo({
+      url: `/pages/update_pwd/update_pwd?_id=${_id}`,
     });
   },
   // 退出登录
@@ -92,10 +86,6 @@ Page({
         }
       }
     })
-  },
-  //options(Object)
-  onLoad: function (options) {
-    this.init();
   },
   onShow: function () {
     this.init();

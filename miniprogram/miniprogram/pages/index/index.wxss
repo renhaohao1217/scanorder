@@ -1,6 +1,7 @@
 /* 首页背景 */
 .index-background {
-  width: 100%;
+  width: 750rpx;
+  height: 348rpx;
 }
 /* 首页按钮 */
 .index-button {
@@ -8,12 +9,12 @@
   padding: 80rpx;
   padding-bottom: 40rpx;
   margin: 0 auto;
-  background-color: rgba(245, 245, 245, 0.5);
+  background-color: #fff;
   border-radius: 20rpx;
   position: relative;
   top: -40rpx;
 }
 .index-button > button {
-  width: 100%;
+  width: 100% !important;
   margin-bottom: 40rpx;
 }

@@ -14,7 +14,7 @@
   <view class="userinfo-list">
     <view>
       <text>用户名</text>
-      <input value="{{username}}" type="text" placeholder="6-20个字母,数字,_,-,字母开头" bindinput="input_model" bindblur="check" data-target="username"></input>
+      <input value="{{username}}" type="text" placeholder="6-20个字母,数字,_,-,字母开头" bindblur="check" data-target="username"></input>
     </view>
     <image class="more" src="/images/more.png"></image>
   </view>
@@ -22,7 +22,7 @@
   <view class="userinfo-list">
     <view>
       <text>手机号码</text>
-      <input value="{{phone}}" type="number" bindinput="input_model" bindblur="check" data-target="phone"></input>
+      <input value="{{phone}}" type="number" bindblur="check" data-target="phone"></input>
     </view>
     <image class="more" src="/images/more.png"></image>
   </view>
@@ -30,7 +30,7 @@
   <view class="userinfo-list">
     <view>
       <text>店铺名称</text>
-      <input value="{{shop}}" type="text" bindinput="input_model" bindblur="check" data-target="shop"></input>
+      <input value="{{shop}}" type="text" bindblur="check" data-target="shop"></input>
     </view>
     <image class="more" src="/images/more.png"></image>
   </view>
@@ -50,8 +50,10 @@
   <view class="userinfo-list">
     <view>
       <text>详细地址</text>
-      <input value="{{address}}" type="text" bindinput="input_model" bindblur="check" data-target="address"></input>
+      <input value="{{address}}" type="text" bindblur="check" data-target="address"></input>
     </view>
     <image class="more" src="/images/more.png"></image>
   </view>
+  <!-- 保存修改 -->
+  <button type="primary" bindtap="save">保存修改</button>
 </view>

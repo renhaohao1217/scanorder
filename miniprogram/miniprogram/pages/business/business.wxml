@@ -1,9 +1,9 @@
 <!-- 导航栏 -->
-<navigation-bar icon="{{true}}" title="{{title}}"></navigation-bar>
+<navigation-bar icon="{{icon}}" title="{{title}}"></navigation-bar>
 <!-- 点餐界面 -->
-<view class="order" style="{{'height:' + height}}" catchtap="cancel" data-target="page">
+<view class="order" style="{{'height:' + height}}" data-target="page">
   <!-- 商家信息 -->
-  <view class="order-shop">
+  <view class="order-shop" catchtap="cancel">
     <view class="shop-content">
       <text class="shop-name">{{shop}}</text>
       <text class="shop-address">{{region}}{{address}}</text>
@@ -11,8 +11,8 @@
     <image class="shop-logo" src="{{image}}"></image>
   </view>
   <!-- 商品列表 -->
-  <view class="order-container">
-    <classify-list classify_arr="{{classify_arr}}" goods_arr="{{goods_arr}}" bindmyevent="myevent"></classify-list>
+  <view class="order-container" catchtap="cancel">
+    <classify-list classify_arr="{{classify_arr}}" goods_arr="{{goods_arr}}" num="{{num}}" sum="{{sum}}" bindmyevent="myevent"></classify-list>
   </view>
   <!-- 底部购物车 -->
   <view class="order-footer">
