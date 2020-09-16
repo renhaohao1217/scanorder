@@ -65,6 +65,29 @@
 | amount   | String | 记录单件商品的数量 |
 | goods_id | String | 商品id             |
 
+#### 1.6 订单信息集合(so_order)
+
+| 字段名称 | 类型    | 字段描述                    |
+| -------- | ------- | --------------------------- |
+| _id      | String  | 唯一标志一条记录            |
+| _openid  | String  | 标志记录的创建者            |
+| classify | String  | 订单的分类：桌位号 / 流水号 |
+| number   | Number  | 订单的序列号                |
+| state    | Boolean | 订单的状态                  |
+| time     | String  | 订单的时间                  |
+| goods    | Array   | 订单包含的商品              |
+| shop_id  | String  | 商家id                      |
+
+#### 1.7 订单任务集合(so_task)
+
+| 字段名称 | 类型   | 字段描述         |
+| -------- | ------ | ---------------- |
+| _id      | String | 唯一标志一条记录 |
+| _openid  | String | 标志记录的创建者 |
+| shop_id  | String | 商家id           |
+
+
+
 ### 2 云函数
 
 ```js

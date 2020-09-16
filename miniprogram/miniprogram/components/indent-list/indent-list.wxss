@@ -9,18 +9,19 @@
   display: flex;
   justify-content: space-between;
   text-align: center;
+  font-size: 32rpx;
 }
 /* 订单编号 */
 .indent-title > text:first-child {
-  font-size: 24px;
+  font-size: 48rpx;
   margin-bottom: 20rpx;
   color: green;
 }
 .indent-title > text:last-child {
-  font-size: 12px;
+  font-size: 24rpx;
 }
 .indent-state {
-  width: 140px;
+  width: 280rpx;
 }
 view > text:first-child {
   margin-bottom: 40rpx;
@@ -32,4 +33,19 @@ view > text:first-child {
 .inline {
   display: inline-block !important;
   margin-bottom: 0;
+}
+
+/* 平板尺寸 */
+@media (min-width: 768px) {
+  .indent-list {
+    padding: 20rpx;
+    font-size: 20rpx;
+  }
+  /* 订单编号 */
+  .indent-title > text:first-child {
+    font-size: 32rpx;
+  }
+  .indent-title > text:last-child {
+    font-size: 16rpx;
+  }
 }

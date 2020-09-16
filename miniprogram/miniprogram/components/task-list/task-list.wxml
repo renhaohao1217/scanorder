@@ -12,12 +12,16 @@
   <!-- 内容 -->
   <view class="task-content">
     <view class="content-list">
+      <!-- 标题 -->
       <view class="list-name c00f">北京烤鸭</view>
+      <!-- 数量 -->
       <view class="list-num fs14">
         数量×
         <text class="fa5151">2</text>
       </view>
+      <!-- 时间 -->
       <view class="list-time c080 fs14">0分钟前</view>
+      <image src="/images/end.png"></image>
     </view>
     <view class="content-list">
       <view class="list-name c00f">北京烤鸭</view>

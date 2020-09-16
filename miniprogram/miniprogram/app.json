@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/business/business",
-    "pages/indent-info/indent-info",
-    "pages/standard/standard",
-    "pages/indent/indent",
-    "pages/task/task",
     "pages/index/index", 
+    "pages/task/task",
+    "pages/indent/indent",
+    "pages/indent-info/indent-info", 
+    "pages/business/business",
+    "pages/standard/standard",
     "pages/order/order", 
     "pages/menu/menu",
     "pages/userinfo/userinfo",
@@ -23,8 +23,8 @@
     "navigationStyle": "custom"
   },
   "tabBar": {
-    "color": "#696969",
-    "selectedColor": "#FA5151",
+    "color": "#000000",
+    "selectedColor": "#ff3333",
     "backgroundColor": "",
     "position": "bottom",
     "borderStyle": "black",
@@ -40,6 +40,12 @@
         "text": "菜单",
         "iconPath": "./images/menu.png",
         "selectedIconPath": "./images/menu_a.png"
+      },
+      {
+        "pagePath": "pages/task/task",
+        "text": "任务",
+        "iconPath": "./images/task.png",
+        "selectedIconPath": "./images/task_a.png"
       },
       {
         "pagePath": "pages/indent/indent",

@@ -1,0 +1,6 @@
+<view class="order-list">
+  <image></image>
+  <text>可乐</text>
+  <text>×2</text>
+  <text>小计:￥111</text>
+</view>

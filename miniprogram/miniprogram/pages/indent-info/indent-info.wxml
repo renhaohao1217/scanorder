@@ -1,18 +1,17 @@
 <!-- 导航栏 -->
-<navigation-bar title="订单详情"></navigation-bar>
+<navigation-bar title="订单详情" icon="{{true}}"></navigation-bar>
 <!-- 内容区域 -->
 <view class="indent-info-container">
   <view class="info-title">
     <text>楼下1</text>
     <text class="fs12">桌位</text>
   </view>
-  <view class="info-number fs12">订单号</view>
-  <view class="info-time fs12 fa5151">下单时间</view>
-  <view class="info-list">
-    <image class="" src=""></image>
-    <text class="">可乐</text>
-    <text class="">数量</text>
-    <text class="">价格</text>
+  <view class="info-number">订单号</view>
+  <view class="info-time">下单时间</view>
+  <order-list></order-list>
+  <order-list></order-list>
+  <view class="footer">
+    <text>总价:￥500</text>
+    <button>去结账</button>
   </view>
-  <button>去结账</button>
 </view>
