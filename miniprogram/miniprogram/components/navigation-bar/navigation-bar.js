@@ -20,6 +20,14 @@ Component({
     icon: {
       type: Boolean,
       value: false
+    },
+    background: {
+      type: String,
+      value: '#f33'
+    },
+    placeholder: {
+      type: Boolean,
+      value: true
     }
   },
   methods: {

@@ -20,7 +20,7 @@
   <view class="container-right">
     <view class="right-list" wx:for="{{goods_arr}}" wx:key="index" data-index="{{index}}">
       <!-- 商品图片 -->
-      <image src="{{item.image}}" lazy-load="{{true}}" catchtap="update" data-index="{{index}}"></image>
+      <image src="{{item.image}}" lazy-load="{{true}}" catchtap="info" data-index="{{index}}"></image>
       <view class="right-list-content">
         <!-- 商品标题 -->
         <text class="name">{{item.title}}</text>

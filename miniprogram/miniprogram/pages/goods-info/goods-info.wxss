@@ -1,0 +1,64 @@
+Page {
+  position: relative;
+  background-color: rgb(245, 245, 245);
+}
+.goods-info-container > .top {
+  background-color: #fff;
+  padding: 40rpx 30rpx;
+}
+swiper,
+.image {
+  width: 750rpx;
+  height: 480rpx;
+}
+.title {
+  font-size: 50rpx;
+  font-weight: bold;
+}
+.price {
+  font-size: 40rpx;
+  color: #f33;
+  font-weight: bold;
+  margin-top: 20rpx;
+}
+.btn-container {
+  position: relative;
+  left: 60%;
+  width: 250rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.btn-container > text {
+  font-size: 40rpx;
+  padding: 0 10px;
+}
+.btn {
+  display: inline-block;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 60rpx;
+  text-align: center;
+  color: #f33;
+  border-radius: 50%;
+  box-shadow: 0 0 6rpx #ccc;
+  font-weight: lighter;
+}
+.desc {
+  margin-top: 30rpx;
+  background-color: #fff;
+  padding: 30rpx;
+  font-size: 28rpx;
+  color: #696969;
+}
+
+/* 平板尺寸 */
+@media (min-width: 768px) {
+  .btn {
+    width: 50rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+  }
+}

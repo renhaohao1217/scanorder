@@ -1,30 +1,26 @@
 {
   "pages": [
+    "pages/task/task",
+    "pages/order/order",
+    "pages/standard/standard",
     "pages/business/business",
-
+    "pages/indent-info/indent-info",
     "pages/home/home",
     "pages/userinfo/userinfo",
-    "pages/update_pwd/update_pwd",  
-    "pages/order/order", 
- 
-
-    "pages/index/index", 
-    "pages/task/task",
-    "pages/indent/indent",
-    "pages/indent-info/indent-info", 
-    
-    "pages/standard/standard",
-    
+    "pages/update_pwd/update_pwd",
+    "pages/index/index",
     "pages/menu/menu",
-  
-    "pages/register/register",  
-    "pages/login/login"
+    "pages/goods-info/goods-info",
+    "pages/register/register",
+    "pages/login/login",
+    
+    "pages/indent/indent"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "navigationStyle": "custom"
   },
   "tabBar": {

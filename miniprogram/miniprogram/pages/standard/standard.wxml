@@ -22,5 +22,11 @@
   <!-- 是否售馨 -->
   <text class="fa5151">售馨:</text>
   <switch checked="{{sale}}" type="switch" bindchange="update" data-key="sale"></switch>
+  <!-- 商品轮播图 -->
+  <view>图片:</view>
+  <view class="swiper">
+    <image src="/images/add.png" bindtap="add"></image>
+    <image src="{{item}}" wx:for="{{images}}" wx:key="index" bindtap="remove" data-index="{{index}}"></image>
+  </view>
   <button type="primary" bindtap="save">保存修改</button>
 </view>

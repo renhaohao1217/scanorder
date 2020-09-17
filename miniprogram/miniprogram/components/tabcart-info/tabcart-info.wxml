@@ -1,0 +1,18 @@
+<!-- 购物车详细信息展示 -->
+<view class="order-cart {{hidden? 'hidden' : '' }}">
+  <view class="clear" bindtap="clear">清空购物车</view>
+  <view>
+    <view class="cart-list" wx:for="{{cart_arr}}" wx:key="index">
+      <image src="{{item.goodsList[0].image}}"></image>
+      <view>
+        <text>{{item.goodsList[0].title}}</text>
+        <text>￥{{item.goodsList[0].price}}</text>
+        <view>
+          <text data-count="-" data-index="{{index}}" catchtap="calc">-</text>
+          <text>{{item.amount}}</text>
+          <text data-count="+" data-index="{{index}}" catchtap="calc">+</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

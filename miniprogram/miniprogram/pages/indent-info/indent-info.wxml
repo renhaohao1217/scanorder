@@ -3,15 +3,13 @@
 <!-- 内容区域 -->
 <view class="indent-info-container">
   <view class="info-title">
-    <text>楼下1</text>
-    <text class="fs12">桌位</text>
+    <text>{{order}}</text>
   </view>
-  <view class="info-number">订单号</view>
-  <view class="info-time">下单时间</view>
-  <order-list></order-list>
-  <order-list></order-list>
+  <view class="info-number">订单号:{{_id}}</view>
+  <view class="info-time">下单时间:{{time}}</view>
+  <order-list wx:for="{{cart_arr}}" wx:key="index" info="{{item}}"></order-list>
   <view class="footer">
-    <text>总价:￥500</text>
+    <text>总价:￥{{sum}}</text>
     <button>去结账</button>
   </view>
 </view>

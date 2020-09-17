@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "classify-list": "/components/classify-list/classify-list",
     "navigation-bar": "/components/navigation-bar/navigation-bar",
     "tab-cart": "/components/tab-cart/tab-cart",
     "tabcart-info": "/components/tabcart-info/tabcart-info"

@@ -3,57 +3,22 @@
   <!-- 标题 -->
   <view class="task-title">
     <view class="title-name">
-      <text class="fa5151">6号</text>
-      <text class="fs14">流水</text>
+      <text class="fa5151">{{item.orderList[0].classify}}</text>
     </view>
-    <text class="title-time fs14 c080">0分钟前</text>
+    <text class="title-time fs14 c080">{{item.orderList[0].time}}</text>
     <text class="title-nav fs14 c00f">查看订单></text>
   </view>
   <!-- 内容 -->
   <view class="task-content">
-    <view class="content-list">
+    <view class="content-list" wx:for="{{item.orderList[0].goods}}" wx:key="index">
       <!-- 标题 -->
-      <view class="list-name c00f">北京烤鸭</view>
+      <view class="list-name c00f">{{item.goodsList[0].title}}</view>
       <!-- 数量 -->
       <view class="list-num fs14">
         数量×
-        <text class="fa5151">2</text>
+        <text class="fa5151">{{item.amount}}</text>
       </view>
-      <!-- 时间 -->
-      <view class="list-time c080 fs14">0分钟前</view>
-      <image src="/images/end.png"></image>
-    </view>
-    <view class="content-list">
-      <view class="list-name c00f">北京烤鸭</view>
-      <view class="list-num fs14">
-        数量×
-        <text class="fa5151">2</text>
-      </view>
-      <view class="list-time c080 fs14">0分钟前</view>
-    </view>
-    <view class="content-list">
-      <view class="list-name c00f">北京烤鸭</view>
-      <view class="list-num fs14">
-        数量×
-        <text class="fa5151">2</text>
-      </view>
-      <view class="list-time c080 fs14">0分钟前</view>
-    </view>
-    <view class="content-list">
-      <view class="list-name c00f">北京烤鸭</view>
-      <view class="list-num fs14">
-        数量×
-        <text class="fa5151">2</text>
-      </view>
-      <view class="list-time c080 fs14">0分钟前</view>
-    </view>
-    <view class="content-list">
-      <view class="list-name c00f">北京烤鸭</view>
-      <view class="list-num fs14">
-        数量×
-        <text class="fa5151">2</text>
-      </view>
-      <view class="list-time c080 fs14">0分钟前</view>
+      <!-- <image src="/images/end.png" bindtap=""></image> -->
     </view>
   </view>
 </view>

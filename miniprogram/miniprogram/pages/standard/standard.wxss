@@ -27,3 +27,34 @@
   width: 100%;
   margin-top: 10px;
 }
+/* 添加轮播图 */
+.swiper > image:nth-child(1) {
+  width: 80rpx;
+  height: 80rpx;
+  padding: 60rpx;
+}
+.swiper > image:not(:nth-child(1)) {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+/* 平板尺寸 */
+@media (min-width: 768px) {
+  .logo-image {
+    width: 134rpx;
+    height: 134rpx;
+  }
+  .logo-tips {
+    font-size: 16rpx;
+  }
+  /* 添加轮播图 */
+  .swiper > image:nth-child(1) {
+    width: 54rpx;
+    height: 54rpx;
+    padding: 40rpx;
+  }
+  .swiper > image:not(:nth-child(1)) {
+    width: 134rpx;
+    height: 134rpx;
+  }
+}

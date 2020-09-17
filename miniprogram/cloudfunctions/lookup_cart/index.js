@@ -15,7 +15,7 @@ exports.main = async (event, context) => {
         foreignField:event.foreignField,
         as:event.as
       })
-      // .match(event.match)
+      .match(event.match)
       // .sort({
       //   time:1
       // })

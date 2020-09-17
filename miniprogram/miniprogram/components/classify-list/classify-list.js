@@ -123,12 +123,19 @@ Component({
           })
         })
     },
-    // 更新商品信息
-    update (event) {
+    // 展示商品信息
+    info (event) {
       let { index } = event.currentTarget.dataset;
       let { _id } = this.data.goods_arr[index];
+      let { num, sum, goods_arr, source } = this.data
+      if (source == 'waiter') {
+        wx.navigateTo({
+          url: `/pages/standard/standard?_id=${_id}`
+        })
+        return;
+      }
       wx.navigateTo({
-        url: `/pages/standard/standard?_id=${_id}`
+        url: `/pages/goods-info/goods-info?_id=${_id}&num=${num}&sum=${sum}&goods_arr=${JSON.stringify(goods_arr)}&index=${index}`
       })
     },
     //删除分类或者商品

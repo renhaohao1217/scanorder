@@ -15,30 +15,7 @@
     <classify-list classify_arr="{{classify_arr}}" goods_arr="{{goods_arr}}" num="{{num}}" sum="{{sum}}" bindmyevent="myevent"></classify-list>
   </view>
   <!-- 底部购物车 -->
-  <view class="order-footer">
-    <view class="number" catchtap="show">
-      <image class="number" src="/images/cart.png"></image>
-      <text>{{num}}</text>
-    </view>
-    <text class="cf33">￥{{sum}}</text>
-    <button class="button" bindtap="pay">去结算</button>
-  </view>
+  <tab-cart hidden="{{hidden}}" cart_arr="{{cart_arr}}" num="{{num}}" sum="{{sum}}" order="{{order}}" bindtabcart="tabcart"></tab-cart>
   <!-- 购物车详细信息展示 -->
-  <view class="order-cart {{hidden? 'hidden' : '' }}">
-    <view class="clear" bindtap="clear">清空购物车</view>
-    <view>
-      <view class="cart-list" wx:for="{{cart_arr}}" wx:key="index">
-        <image src="{{item.goodsList[0].image}}"></image>
-        <view>
-          <text>{{item.goodsList[0].title}}</text>
-          <text>￥{{item.goodsList[0].price}}</text>
-          <view>
-            <text data-count="-" data-index="{{index}}" catchtap="calc">-</text>
-            <text>{{item.amount}}</text>
-            <text data-count="+" data-index="{{index}}" catchtap="calc">+</text>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
+  <tabcart-info hidden="{{hidden}}" goods_arr="{{goods_arr}}" cart_arr="{{cart_arr}}" num="{{num}}" sum="{{sum}}" bindtabcartinfo="tabcartinfo"></tabcart-info>
 </view>

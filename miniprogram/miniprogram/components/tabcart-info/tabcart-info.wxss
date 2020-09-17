@@ -1,0 +1,92 @@
+/* 购物车详细展示 */
+.order-cart {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 100rpx;
+  background-color: #fff;
+}
+.order-cart > .clear {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #f40;
+  color: #fff;
+  border-radius: 10rpx 10rpx 0 0;
+}
+.order-cart > view:nth-child(2) {
+  max-height: 560rpx;
+  overflow-y: scroll;
+}
+.order-cart .cart-list {
+  display: flex;
+  width: 100%;
+  padding: 20rpx;
+  position: relative;
+  box-sizing: border-box;
+}
+.cart-list + .cart-list {
+  border-top: 1px solid rgb(245, 245, 245);
+}
+.cart-list > image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 10px;
+}
+.cart-list > view > text:nth-child(1) {
+  display: block;
+  font-size: 36rpx;
+}
+.cart-list > view > text:nth-child(2) {
+  color: #f33;
+  font-size: 28rpx;
+}
+.cart-list > view > view {
+  display: inline-block;
+  position: absolute;
+  right: 20rpx;
+}
+.cart-list > view > view > text:nth-child(1),
+.cart-list > view > view > text:nth-child(3) {
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 10rpx;
+  line-height: 40rpx;
+  text-align: center;
+  border: 1px solid #f40;
+}
+.cart-list > view > view > text:nth-child(2) {
+  padding: 0 10rpx;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 平板尺寸 */
+@media (min-width: 768px) {
+  /* 购物车详细展示 */
+  .order-cart {
+    bottom: 68rpx;
+  }
+  .order-cart > view:nth-child(2) {
+    max-height: 440rpx;
+  }
+  .order-cart > .clear {
+    height: 54rpx;
+    line-height: 54rpx;
+    font-size: 22rpx;
+  }
+  .cart-list > image {
+    width: 68rpx;
+    height: 68rpx;
+  }
+  .cart-list > view > text:nth-child(1) {
+    font-size: 26rpx;
+  }
+  .cart-list > view > text:nth-child(2) {
+    font-size: 18rpx;
+  }
+}

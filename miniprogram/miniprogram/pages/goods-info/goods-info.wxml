@@ -1,0 +1,24 @@
+<!-- 导航栏 -->
+<navigation-bar icon="{{true}}" background="rgba(245,245,245,0.2)" placeholder="{{false}}"></navigation-bar>
+<!-- 内容区域 -->
+<view class="goods-info-container" bindtap="cancel">
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" indicator-active-color="#f40" indicator-color="rgba(245,245,245,0.8)">
+    <swiper-item wx:for="{{images}}" wx:key="index">
+      <image class="image" src="{{item}}"></image>
+    </swiper-item>
+  </swiper>
+  <view class="top">
+    <view class="title">{{title}}</view>
+    <view class="price">￥{{price}}</view>
+    <view class="btn-container">
+      <view class="btn" catchtap="calc" data-count="-" data-index="{{index}}">-</view>
+      <text>{{ !!goods_arr[index].cartList.length? goods_arr[index].cartList[0].amount : 0 }}</text>
+      <view class="btn" catchtap="calc" data-count="+" data-index="{{index}}">+</view>
+    </view>
+  </view>
+  <view wx:if="{{description}}" class="desc">掌柜描述：{{description}}</view>
+</view>
+<!-- 底部购物车 -->
+<tab-cart hidden="{{hidden}}" cart_arr="{{cart_arr}}" num="{{num}}" sum="{{sum}}" bindtabcart="tabcart"></tab-cart>
+<!-- 购物车详细信息展示 -->
+<tabcart-info hidden="{{hidden}}" goods_arr="{{goods_arr}}" cart_arr="{{cart_arr}}" num="{{num}}" sum="{{sum}}" bindtabcartinfo="tabcartinfo"></tabcart-info>
