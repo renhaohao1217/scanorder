@@ -29,4 +29,9 @@
     width: 40rpx;
     height: 40rpx;
   }
+  /* 设置字体大小 */
+  view,
+  text {
+    font-size: 22rpx;
+  }
 }

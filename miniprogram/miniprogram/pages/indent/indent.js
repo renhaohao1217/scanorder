@@ -1,72 +1,49 @@
-// pages/indent/indent.js
+//Page Object
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    indent: {
-      number: '2',
-      classify: '桌号',
-      state: '代收款',
-      time: '50分钟前',
-      price: '422'
-    }
+    indent: [],
+    date: '2020-09-19',
+    today: ''
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  // 改变日期
+  bindDateChange (e) {
+    this.setData({
+      date: e.detail.value
+    })
+    let left = new Date(`${e.detail.value} 00:00:00`).getTime(),
+      right = parseInt(left) + 86400000;
+    this.getIndent(left, right);
+  },
+  // 获取数据
+  getIndent (left, right) {
+    const db = wx.cloud.database();
+    const _ = db.command;
+    db.collection('so_order')
+      .where({
+        shop_id: _.eq(wx.getStorageSync('_id')),
+        time: _.and(_.gt(left), _.lt(right))
+      })
+      .orderBy('time', 'desc')
+      .get()
+      .then(res => {
+        this.setData({
+          indent: res.data
+        })
+      })
+  },
+  //options(Object)
   onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    // 设置年月日
+    let date = new Date();
+    let year = date.getFullYear(),
+      month = (date.getMonth() + 1 + '').padStart(2, '0'),
+      day = (date.getDate() + '').padStart(2, '0');
+    this.setData({
+      date: `${year}-${month}-${day}`,
+      today: `${year}-${month}-${day}`
+    })
+    let left = new Date(`${year}-${month}-${day} 00:00:00`).getTime(),
+      right = parseInt(left) + 86400000;
+    this.getIndent(left, right);
   }
-})
+});

@@ -4,8 +4,7 @@ Page({
     height:
       wx.getStorageSync('windowHeight') -
       wx.getStorageSync('statusBarHeight') -
-      wx.getStorageSync('navigationBarHeight') +
-      'px',
+      wx.getStorageSync('navigationBarHeight') + 'px',
     classify_arr: [],
     goods_arr: []
   },
@@ -17,7 +16,7 @@ Page({
       sum
     })
   },
-  onLoad () {
+  onShow () {
     const db = wx.cloud.database();
     const _ = db.command;
     db.collection('so_classify')

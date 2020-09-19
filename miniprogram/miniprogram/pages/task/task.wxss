@@ -1,4 +1,12 @@
 .task-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 平板尺寸 */
+@media (min-width: 768px) {
+  .task-container {
+    justify-content: flex-start;
+  }
 }

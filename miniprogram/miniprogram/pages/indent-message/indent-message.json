@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "order-list": "/components/order-list/order-list",
     "navigation-bar": "/components/navigation-bar/navigation-bar"
   }
 }

@@ -59,6 +59,12 @@ Page({
       }
     });
   },
+  // 报表信息
+  report () {
+    wx.navigateTo({
+      url: '/pages/report/report'
+    })
+  },
   // 修改密码
   update_pwd () {
     let { _id } = this.data;

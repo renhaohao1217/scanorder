@@ -19,6 +19,10 @@ Component({
     order: {
       type: String,
       value: ''
+    },
+    _id: {
+      type: String,
+      value: ''
     }
   },
   data: {},
@@ -58,7 +62,8 @@ Component({
             from: 'so_goods',
             localField: 'goods_id',
             foreignField: '_id',
-            as: 'goodsList'
+            as: 'goodsList',
+            match: {}
           },
           success: res => {
             resolve(res);
@@ -70,7 +75,7 @@ Component({
     pay () {
       this.getCart()
         .then(res => {
-          let { cart_arr, sum, order } = this.data;
+          let { cart_arr, sum, order, _id } = this.data;
           cart_arr = res.result.list;
           if (!cart_arr.length) {
             wx.showToast({
@@ -81,7 +86,7 @@ Component({
             return;
           }
           wx.navigateTo({
-            url: `/pages/indent-info/indent-info?cart_arr=${JSON.stringify(cart_arr)}&sum=${sum}&order=${order}`,
+            url: `/pages/indent-info/indent-info?cart_arr=${JSON.stringify(cart_arr)}&sum=${sum}&order=${order}&_id=${_id}`,
           });
         });;
     },

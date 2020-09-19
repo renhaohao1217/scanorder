@@ -163,7 +163,8 @@ Component({
           from: 'so_goods',
           localField: 'goods_id',
           foreignField: '_id',
-          as: 'goodsList'
+          as: 'goodsList',
+          match: {}
         },
         success: res => {
           let num = 0, sum = 0;

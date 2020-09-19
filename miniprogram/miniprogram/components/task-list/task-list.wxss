@@ -2,24 +2,25 @@
 .task-list-container {
   display: inline-block;
   width: 350px;
-  min-height: 200px;
+  min-height: 150px;
   box-shadow: 0 0 10px #ccc;
   border-radius: 5px;
-  margin: 5px;
+  margin: 10rpx;
 }
 /* 标题 */
 .task-title {
   border-bottom: 1px solid #ccc;
-  padding: 5px;
+  padding: 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .title-name {
-  display: inline-block;
-  width: 50%;
+  font-size: 18px;
+  color: #f33;
 }
-.title-time,
-.title-nav {
-  display: inline-block;
-  width: 25%;
+.title-time {
+  font-size: 14px;
 }
 /* 内容 */
 .task-content {
@@ -47,16 +48,13 @@
   width: 50px;
   height: 50px;
 }
-/* 通用 */
-.fs14 {
-  font-size: 14px;
-}
-.c080 {
-  color: #080;
-}
-.fa5151 {
-  color: #fa5151;
-}
-.c00f {
-  color: #00f;
+
+/* 平板尺寸 */
+@media (min-width: 768px) {
+  .title-name {
+    font-size: 24rpx;
+  }
+  .title-time {
+    font-size: 18rpx;
+  }
 }

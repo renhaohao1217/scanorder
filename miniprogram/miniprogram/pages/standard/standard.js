@@ -97,7 +97,7 @@ Page({
     wx.showModal({
       title: '删除',
       content: '确认删除这张图片吗?',
-      success (res) {
+      success: res => {
         if (res.confirm) {
           images.splice(index, 1);
           this.setData({

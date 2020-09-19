@@ -1,20 +1,21 @@
 {
-  "pages": [
-    "pages/task/task",
-    "pages/order/order",
+  "pages": [ 
+    "pages/order/order", 
+    "pages/business/business",  
+    "pages/goods-info/goods-info",
+    "pages/menu/menu",
     "pages/standard/standard",
-    "pages/business/business",
+    "pages/task/task",
     "pages/indent-info/indent-info",
+    "pages/indent-message/indent-message",
+    "pages/indent/indent",
+    "pages/report/report",
+    "pages/update_pwd/update_pwd",
     "pages/home/home",
     "pages/userinfo/userinfo",
-    "pages/update_pwd/update_pwd",
     "pages/index/index",
-    "pages/menu/menu",
-    "pages/goods-info/goods-info",
     "pages/register/register",
-    "pages/login/login",
-    
-    "pages/indent/indent"
+    "pages/login/login"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

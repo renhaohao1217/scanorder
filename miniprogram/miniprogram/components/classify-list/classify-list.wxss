@@ -4,7 +4,6 @@
   display: flex;
   border-top: 1px solid rgb(245, 245, 245);
   box-sizing: border-box;
-  font-size: 32rpx;
 }
 /* 左边内容 */
 .container-left {
@@ -26,6 +25,18 @@
   margin-top: 20rpx;
   display: flex;
   justify-content: space-around;
+}
+/* 左边按钮 */
+.container-left > button {
+  background-color: #f33;
+  color: #fff;
+  width: 200rpx !important;
+}
+/* 右边按钮 */
+.container-right > button {
+  background-color: #f33;
+  color: #fff;
+  width: 500rpx !important;
 }
 /* 右边内容 */
 .container-right {
@@ -125,19 +136,65 @@
   line-height: 44px;
   width: 20%;
 }
+.input > button:nth-child(3) {
+  background-color: #f33;
+  color: #fff;
+}
 .hidden {
   display: none;
 }
 
 /* 平板尺寸 */
 @media (min-width: 768px) {
-  /* 商品展示区域 */
-  .classify-list {
-    font-size: 24rpx;
+  /* 左边按钮 */
+  .container-left > button,
+  .container-right > button {
+    font-size: 22rpx;
+  }
+  .right-list > image:first-child {
+    width: 150rpx;
+    height: 150rpx;
+  }
+  .right-list > image:last-child {
+    position: absolute;
+    width: 100rpx;
+    height: 100rpx;
   }
   .right-list-content .btn {
     width: 50rpx;
     height: 50rpx;
     line-height: 50rpx;
+    font-size: 32rpx;
+  }
+  .btn-icon {
+    width: 40rpx;
+    height: 40rpx;
+  }
+  /* 透明输入框 */
+  .input {
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: rgb(0, 0, 0, 0.1);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: left;
+  }
+  .input > input {
+    width: 60%;
+    background-color: #fff;
+    padding: 10rpx;
+    border-bottom: 1px solid rgb(245, 245, 245);
+  }
+  .input > button {
+    margin: 0;
+    height: 44px;
+    line-height: 44px;
+    width: 20%;
+  }
+  .hidden {
+    display: none;
   }
 }

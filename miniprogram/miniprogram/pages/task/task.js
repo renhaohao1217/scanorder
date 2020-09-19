@@ -1,7 +1,30 @@
 //Page Object
 Page({
   data: {
-    task_arr: []
+    task_arr: [],
+    end: []
+  },
+  // 更新数据
+  update (event) {
+    this.setData({
+      end: event.detail.end
+    })
+  },
+  // 移除任务
+  remove (event) {
+    let { index } = event.detail;
+    let { task_arr, end } = this.data;
+    // 删除数据库
+    wx.cloud.database()
+      .collection('so_task')
+      .doc(task_arr[index]._id)
+      .remove()
+    task_arr.splice(index, 1);
+    end.splice(index, 1);
+    this.setData({
+      task_arr,
+      end
+    })
   },
   //options(Object)
   onLoad: function (options) {
@@ -18,39 +41,16 @@ Page({
         }
       },
       success: res => {
-        console.log(res.result.list);
+        let end = [];
+        for (let item of res.result.list) {
+          let hash = new Array(item.orderList[0].goods.length).fill(true);
+          end.push(hash);
+        }
         this.setData({
-          task_arr: res.result.list
+          task_arr: res.result.list,
+          end
         })
       }
     })
-  },
-  onReady: function () {
-
-  },
-  onShow: function () {
-
-  },
-  onHide: function () {
-
-  },
-  onUnload: function () {
-
-  },
-  onPullDownRefresh: function () {
-
-  },
-  onReachBottom: function () {
-
-  },
-  onShareAppMessage: function () {
-
-  },
-  onPageScroll: function () {
-
-  },
-  //item(index,pagePath,text)
-  onTabItemTap: function (item) {
-
   }
 });

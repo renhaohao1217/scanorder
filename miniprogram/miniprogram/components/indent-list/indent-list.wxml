@@ -1,21 +1,17 @@
+<!-- 引入日期过滤器 -->
+<wxs module="filter" src="../../filter/filter.wxs" />
 <!-- 订单列表组件 -->
 <view class="indent-list" bindtap="info">
-  <view class="indent-title">
-    <text>{{indent.number}}</text>
-    <text>{{indent.classify}}</text>
-  </view>
+  <!-- 桌位号 -->
+  <view class="indent-title">{{indent.classify}}</view>
+  <!-- 订单状态 -->
   <view class="indent-state">
-    <text>
-      <text class="inline">结账状态:</text>
-      <text class="fa5151 inline">{{indent.state}}</text>
-    </text>
-    <text>
-      <text class="inline">下单时长:</text>
-      <text class="fa5151 inline">{{indent.time}}</text>
-    </text>
+    <text>结账状态:</text>
+    <text>{{indent.state}}</text>
   </view>
-  <view class="indent-price">
-    <text>总价</text>
-    <text class="fa5151">￥{{indent.price}}</text>
+  <!-- 订单时间 -->
+  <view class="indent-time">
+    <text>下单时间：</text>
+    <text>{{filter.date(indent.time)}}</text>
   </view>
 </view>

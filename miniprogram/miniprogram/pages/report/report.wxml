@@ -1,0 +1,32 @@
+<!-- 导航栏 -->
+<navigation-bar title="报表" icon="{{true}}"></navigation-bar>
+<!-- 报表内容区域 -->
+<view class="report-container">
+  <view class="report-time">
+    <!-- 起始时间 -->
+    <view class="section">
+      <picker mode="date" value="{{start}}" start="2020-01-01" end="{{today}}" bindchange="bindDateChange" data-type="start">
+        <view class="picker">{{start}}</view>
+      </picker>
+    </view>
+    <view>到</view>
+    <!-- 结束时间 -->
+    <view class="section">
+      <picker mode="date" value="{{end}}" start="2020-01-01" end="{{today}}" bindchange="bindDateChange" data-type="end">
+        <view class="picker">{{end}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class="money">
+    <view class="money-title">实收金额</view>
+    <text class="money-content">{{money}}</text>
+    <text class="money-amount">共{{amount}}笔</text>
+  </view>
+  <view class="sales">
+    <view class="sales-title">销售排行榜</view>
+    <canvas type="2d" id="myCanvas"></canvas>
+    <view class="sales-content">
+      <view class="content-title" wx:for="{{sales}}" wx:key="index">{{item.title}}</view>
+    </view>
+  </view>
+</view>

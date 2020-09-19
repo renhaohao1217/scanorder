@@ -1,4 +1,8 @@
-<navigation-bar icon="{{true}}"></navigation-bar>
+<!-- 导航栏 -->
+<navigation-bar icon="{{true}}" background="transparent" placeholder="{{false}}"></navigation-bar>
+<!-- 背景图片 -->
+<image src="/images/background.jpg"></image>
+<!-- 内容区域 -->
 <view class="register-container">
   <!-- 用户名 -->
   <input value="{{username}}" type="text" placeholder="用户名" bindinput="input_model" data-target="username" bindfocus="toast" bindblur="check"></input>

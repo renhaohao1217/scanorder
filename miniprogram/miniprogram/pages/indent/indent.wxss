@@ -1,1 +1,12 @@
-
+.picker {
+  width: 700rpx;
+  margin: 10rpx auto;
+  box-sizing: border-box;
+  padding: 10rpx;
+  display: flex;
+}
+.picker > image {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+}

@@ -1,0 +1,76 @@
+.report-container {
+  padding: 20rpx;
+}
+.report-container > view:not(:nth-child(1)) {
+  width: 700rpx;
+  box-sizing: border-box;
+  margin: 20rpx auto;
+  padding: 20rpx;
+  box-shadow: 0 0 10rpx #ccc;
+  border-radius: 10rpx;
+}
+/* 时间选择器 */
+.report-time {
+  display: flex;
+  width: 300px;
+  justify-content: space-around;
+  margin: 10px auto 30rpx;
+}
+/* 实收金额 */
+.money {
+  position: relative;
+}
+.money-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.money-content {
+  font-size: 20px;
+  color: #f33;
+}
+.money-amount {
+  position: absolute;
+  right: 10px;
+}
+/* 销售排行榜 */
+.sales-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: dodgerblue;
+  font-weight: bold;
+}
+.sales-content {
+  width: 600rpx;
+  margin: 0 auto;
+  display: flex;
+}
+.content-title {
+  width: 80rpx;
+  text-align: center;
+}
+.content-title + .content-title {
+  margin-left: 50rpx;
+}
+/* 画布 */
+canvas {
+  /* border: 1px solid #ccc; */
+  width: 600rpx;
+  height: 300rpx;
+  margin: 30px auto 0;
+}
+
+/* 平板尺寸 */
+@media (min-width: 768px) {
+  /* 实收金额 */
+  .money-title {
+    font-size: 22rpx;
+  }
+  .money-content {
+    font-size: 24rpx;
+  }
+  /* 销售排行榜 */
+  .sales-title {
+    font-size: 22rpx;
+  }
+}

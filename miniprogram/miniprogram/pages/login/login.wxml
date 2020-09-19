@@ -1,5 +1,7 @@
 <!-- 导航栏 -->
-<navigation-bar icon="{{true}}"></navigation-bar>
+<navigation-bar icon="{{true}}" background="transparent" placeholder="{{false}}"></navigation-bar>
+<!-- 背景图片区域 -->
+<image src="/images/background.jpg"></image>
 <!-- 登录内容区域 -->
 <view class="login-container">
   <input value="{{username}}" type="text" data-type="username" placeholder="请输入用户名/手机号" bindinput="input_model"></input>

@@ -3,6 +3,10 @@
   box-sizing: border-box;
   padding: 40rpx 60rpx;
 }
+image {
+  width: 750rpx;
+  height: 348rpx;
+}
 input {
   padding: 20rpx 0;
 }

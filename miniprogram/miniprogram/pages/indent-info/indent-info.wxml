@@ -1,12 +1,15 @@
+<!-- 引入日期过滤器 -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!-- 导航栏 -->
 <navigation-bar title="订单详情" icon="{{true}}"></navigation-bar>
 <!-- 内容区域 -->
 <view class="indent-info-container">
-  <view class="info-title">
-    <text>{{order}}</text>
-  </view>
+  <!-- 桌位号 -->
+  <view class="info-title">{{order}}</view>
+  <!-- 订单号 -->
   <view class="info-number">订单号:{{_id}}</view>
-  <view class="info-time">下单时间:{{time}}</view>
+  <!-- 下单时间 -->
+  <view class="info-time">下单时间:{{filter.date(time)}}</view>
   <order-list wx:for="{{cart_arr}}" wx:key="index" info="{{item}}"></order-list>
   <view class="footer">
     <text>总价:￥{{sum}}</text>

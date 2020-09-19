@@ -2,5 +2,14 @@
 <navigation-bar title="订单"></navigation-bar>
 <!-- 订单内容区域 -->
 <view class="indent-container">
-  <indent-list indent="{{indent}}"></indent-list>
+  <!-- 日期选择器 -->
+  <view class="section">
+    <picker mode="date" value="{{date}}" start="2020-01-01" end="{{today}}" bindchange="bindDateChange">
+      <view class="picker">
+        <text>{{date}}</text>
+        <image src="/images/under.png"></image>
+      </view>
+    </picker>
+  </view>
+  <indent-list indent="{{item}}" wx:for="{{indent}}" wx:key="index"></indent-list>
 </view>

@@ -33,15 +33,16 @@ Page({
       address: false
     }
   },
-  // 自定义方法
+  // 双向数据绑定
   input_model (event) {
-    let target = event.target.dataset.target;
+    let { target } = event.target.dataset;
     this.setData({
       [target]: event.detail.value
     })
   },
+  // 在输入框聚焦的时候提示用户输入信息的格式
   toast (event) {
-    let target = event.target.dataset.target;
+    let { target } = event.target.dataset;
     let { focus, format, registered } = this.data;
     focus[target] = true;
     format[target] = false;
@@ -52,6 +53,7 @@ Page({
       registered
     })
   },
+  // 在输入框失去焦点的时候检查用户是否输入正确
   check (event) {
     let { target } = event.target.dataset;
     let { username, password, repassword, phone, shop, address, focus, format, registered } = this.data;
@@ -87,6 +89,7 @@ Page({
         })
     }
   },
+  // 用户信息校验正确之后进行注册
   register () {
     let { username, password, phone, shop, address, format, registered } = this.data;
     // 如果信息不正确，返回

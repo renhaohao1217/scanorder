@@ -61,4 +61,25 @@ swiper,
     height: 50rpx;
     line-height: 50rpx;
   }
+
+  .title {
+    font-size: 30rpx;
+  }
+  .price {
+    font-size: 26rpx;
+  }
+  .btn-container > text {
+    font-size: 30rpx;
+    padding: 0 6px;
+  }
+  .btn {
+    width: 40rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 40rpx;
+  }
+  .desc {
+    margin-top: 24rpx;
+    font-size: 24rpx;
+  }
 }

@@ -1,0 +1,9 @@
+var filter = {
+  date: function (time) {
+    return getDate(time).toLocaleString();
+  }
+}
+// 导出模块
+module.exports = {
+  date: filter.date
+}

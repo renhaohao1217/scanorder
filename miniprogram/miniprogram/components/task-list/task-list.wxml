@@ -1,24 +1,23 @@
+<!-- 引入日期过滤器 -->
+<wxs module="filter" src="../../filter/filter.wxs"></wxs>
 <!-- 我的任务列表组件 -->
 <view class="task-list-container">
   <!-- 标题 -->
   <view class="task-title">
-    <view class="title-name">
-      <text class="fa5151">{{item.orderList[0].classify}}</text>
-    </view>
-    <text class="title-time fs14 c080">{{item.orderList[0].time}}</text>
-    <text class="title-nav fs14 c00f">查看订单></text>
+    <view class="title-name">{{item.orderList[0].classify}}</view>
+    <text class="title-time">{{filter.date(item.orderList[0].time)}}</text>
   </view>
   <!-- 内容 -->
   <view class="task-content">
-    <view class="content-list" wx:for="{{item.orderList[0].goods}}" wx:key="index">
+    <view class="content-list" wx:for="{{item.orderList[0].goods}}" wx:key="index" bindtap="toggle" data-index="{{index}}">
       <!-- 标题 -->
-      <view class="list-name c00f">{{item.goodsList[0].title}}</view>
+      <view class="list-name" data-index="{{index}}">{{item.goodsList[0].title}}</view>
       <!-- 数量 -->
-      <view class="list-num fs14">
+      <view class="list-num" data-index="{{index}}">
         数量×
-        <text class="fa5151">{{item.amount}}</text>
+        <text data-index="{{index}}">{{item.amount}}</text>
       </view>
-      <!-- <image src="/images/end.png" bindtap=""></image> -->
+      <image src="/images/end.png" class="{{result[index] ? 'hidden' : ''}}" data-index="{{index}}"></image>
     </view>
   </view>
 </view>

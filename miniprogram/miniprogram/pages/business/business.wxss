@@ -35,14 +35,14 @@
     height: 68rpx;
   }
   .shop-name {
-    font-size: 28rpx;
+    font-size: 30rpx;
   }
   .shop-address {
-    font-size: 16rpx;
+    font-size: 18rpx;
   }
   .shop-logo {
-    width: 68rpx;
-    height: 68rpx;
+    width: 74rpx;
+    height: 74rpx;
   }
   /* 商品内容区域 */
   .order-container {

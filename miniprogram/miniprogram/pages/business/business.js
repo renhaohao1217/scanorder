@@ -1,6 +1,7 @@
 Page({
   // 页面的初始数据
   data: {
+    _id: '',
     title: '桌位号点餐',
     icon: false,
     method: 'table',
@@ -8,8 +9,7 @@ Page({
     height:
       wx.getStorageSync('windowHeight') -
       wx.getStorageSync('statusBarHeight') -
-      wx.getStorageSync('navigationBarHeight') +
-      'px',
+      wx.getStorageSync('navigationBarHeight') + 'px',
     shop: '',
     image: '',
     region: '',
@@ -67,7 +67,8 @@ Page({
         from: 'so_goods',
         localField: 'goods_id',
         foreignField: '_id',
-        as: 'goodsList'
+        as: 'goodsList',
+        match: {}
       },
       success: res => {
         let num = 0, sum = 0;
@@ -86,7 +87,11 @@ Page({
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
     let { method, order } = options;
+    // 获取商家shop_id
     let _id = wx.getStorageSync('_id');
+    this.setData({
+      _id
+    })
     // 获取操作的类型，桌位号点餐 / 流水号点餐 
     if (method) {
       if (method == 'serial') {

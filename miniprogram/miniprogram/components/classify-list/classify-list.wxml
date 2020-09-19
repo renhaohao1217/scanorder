@@ -12,9 +12,7 @@
         <image class="btn-icon" src="/images/remove.png" catchtap="remove" data-index="{{index}}" data-target="classify_arr"></image>
       </view>
     </view>
-    <button wx:if="{{source=='waiter'}}" type="primary" size="mini" bindtap="increase" data-target="classify">
-      添加
-    </button>
+    <button wx:if="{{source=='waiter'}}" bindtap="increase" data-target="classify">添加</button>
   </view>
   <!-- 商品列表 -->
   <view class="container-right">
@@ -44,14 +42,12 @@
       <image src="/images/sale.png" class="{{item.sale?'':'hidden'}}"></image>
     </view>
     <text class="right-bottom" wx:if="{{source=='user'}}">~我已经到底了~</text>
-    <button wx:if="{{source=='waiter'}}" type="primary" size="default" bindtap="increase" data-target="goods">
-      添加
-    </button>
+    <button wx:if="{{source=='waiter'}}" bindtap="increase" data-target="goods">添加</button>
   </view>
 </view>
 <!-- 透明输入框 -->
 <view class="input {{hidden===true ? 'hidden':''}}">
   <input value="{{classify}}" type="text" bindinput="input_model"></input>
-  <button size="mini" type="default" bindtap="minus">取消</button>
-  <button size="mini" type="primary" bindtap="add">确认</button>
+  <button size="mini" type="warn" bindtap="minus">取消</button>
+  <button size="mini" bindtap="add">确认</button>
 </view>

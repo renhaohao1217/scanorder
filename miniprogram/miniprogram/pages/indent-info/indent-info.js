@@ -9,8 +9,8 @@ Page({
   },
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
-    let { cart_arr, sum, order } = options;
-    let time = new Date().toLocaleString();
+    let { cart_arr, sum, order, _id } = options;
+    let time = Date.now();
     cart_arr = JSON.parse(cart_arr);
     this.setData({
       cart_arr,
@@ -23,7 +23,8 @@ Page({
           classify: order,
           state: '待支付',
           time,
-          goods: cart_arr
+          goods: cart_arr,
+          shop_id: _id
         }
       })
       .then(res => {
@@ -39,10 +40,5 @@ Page({
             }
           })
       })
-
-    // const eventChannel = this.getOpenerEventChannel();
-    // eventChannel.on('acceptDataFromOpenerPage', function (data) {
-    //   console.log(data.data)
-    // })
   }
 })

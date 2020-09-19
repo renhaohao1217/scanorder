@@ -13,7 +13,7 @@
   </view>
   <!-- home功能 -->
   <!-- 报表 -->
-  <view class="home-features">
+  <view class="home-features" bindtap="report">
     <image src="/images/report.png"></image>
     <text>报表</text>
     <image class="more" src="/images/more.png"></image>
