@@ -1,9 +1,8 @@
 Page({
   // 页面的初始数据
   data: {
-    _id: '',
+    shop_id: '',
     title: '桌位号点餐',
-    icon: false,
     method: 'table',
     // 导航栏和状态栏高度
     height:
@@ -86,32 +85,48 @@ Page({
   },
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
-    let { method, order } = options;
-    // 获取商家shop_id
-    let _id = wx.getStorageSync('_id');
-    this.setData({
-      _id
-    })
+    let { method, order, shop_id } = options;
+    let { title } = this.data;
     // 获取操作的类型，桌位号点餐 / 流水号点餐 
-    if (method) {
-      if (method == 'serial') {
-        let title = '流水号点餐';
-        this.setData({
-          method,
-          title
-        })
-      }
-      this.setData({
-        icon: !!method,
-        order
-      })
+    if (method == 'serial') {
+      title = '流水号点餐';
     }
-    // 获取商品信息
+    this.setData({
+      method, shop_id, title
+    })
+    // 操作数据库
     const db = wx.cloud.database();
     const _ = db.command;
+    // 用户
+    if (!order) {
+      // 获取桌位号
+      db.collection('so_serial')
+        .where({
+          shop_id: _.eq(shop_id),
+          type: _.eq('table')
+        })
+        .orderBy('value', 'asc')
+        .get()
+        .then(res => {
+          // 选择桌位号
+          let tables = [];
+          for (let val of res.data) {
+            tables.push(val.value)
+          }
+          wx.showActionSheet({
+            itemList: tables,
+            success: res => {
+              order = tables[res.tapIndex];
+              this.setData({
+                order
+              })
+            }
+          })
+        })
+    }
     // 商家信息
     db.collection('so_shop')
-      .doc(_id)
+      .doc(shop_id)
       .field({
         _id: false,
         shop: true,
@@ -127,46 +142,15 @@ Page({
           shop, image, region, address
         })
       })
-    // 获取分类信息 和 商品信息
-    db.collection('so_classify')
-      .where({
-        shop_id: _.eq(_id)
-      })
-      .orderBy('time', 'asc')
-      .get()
-      .then(res => {
-        this.setData({
-          classify_arr: res.data
-        })
-        // 获取分类对应的商品 !!!调用云函数
-        !!res.data.length && wx.cloud.callFunction({
-          name: 'lookup',
-          data: {
-            collection: 'so_goods',
-            from: 'so_cart',
-            localField: '_id',
-            foreignField: 'goods_id',
-            as: 'cartList',
-            match: {
-              classify_id: res.data[0]._id
-            }
-          },
-          success: res => {
-            this.setData({
-              goods_arr: res.result.list
-            })
-          }
-        })
-      })
   },
   onShow: function () {
+    let { shop_id } = this.data;
     const db = wx.cloud.database();
     const _ = db.command;
-    let _id = wx.getStorageSync('_id');
     // 获取分类信息 和 商品信息
     db.collection('so_classify')
       .where({
-        shop_id: _.eq(_id)
+        shop_id: _.eq(shop_id)
       })
       .orderBy('time', 'asc')
       .get()

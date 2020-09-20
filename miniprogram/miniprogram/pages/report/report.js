@@ -37,7 +37,8 @@ Page({
     db.collection('so_order')
       .where({
         shop_id: _.eq(wx.getStorageSync('_id')),
-        time: _.and(_.gt(start), _.lt(end))
+        time: _.and(_.gt(start), _.lt(end)),
+        state: _.eq('已支付')
       })
       .get()
       .then(res => {

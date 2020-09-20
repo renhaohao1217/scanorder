@@ -9,15 +9,13 @@
   </view>
   <!-- 内容 -->
   <view class="task-content">
-    <view class="content-list" wx:for="{{item.orderList[0].goods}}" wx:key="index" bindtap="toggle" data-index="{{index}}">
+    <view class="content-list" wx:for="{{item.orderList[0].goods}}" wx:key="index" bindtap="toggle" data-index="{{index}}" wx:for-item="list">
       <!-- 标题 -->
-      <view class="list-name" data-index="{{index}}">{{item.goodsList[0].title}}</view>
+      <view class="list-name">{{list.goodsList[0].title}}</view>
       <!-- 数量 -->
-      <view class="list-num" data-index="{{index}}">
-        数量×
-        <text data-index="{{index}}">{{item.amount}}</text>
-      </view>
-      <image src="/images/end.png" class="{{result[index] ? 'hidden' : ''}}" data-index="{{index}}"></image>
+      <view class="list-num">数量×{{list.amount}}</view>
+      <!-- 是否完成的tips -->
+      <image src="/images/end.png" class="{{item.state[index] ? 'hidden' : ''}}"></image>
     </view>
   </view>
 </view>

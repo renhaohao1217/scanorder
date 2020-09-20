@@ -1,5 +1,5 @@
 <!-- 导航栏 -->
-<navigation-bar icon="{{icon}}" title="{{title}}"></navigation-bar>
+<navigation-bar icon="{{true}}" title="{{title}}"></navigation-bar>
 <!-- 点餐界面 -->
 <view class="order" style="{{'height:' + height}}" data-target="page">
   <!-- 商家信息 -->
@@ -15,7 +15,7 @@
     <classify-list classify_arr="{{classify_arr}}" goods_arr="{{goods_arr}}" num="{{num}}" sum="{{sum}}" bindmyevent="myevent"></classify-list>
   </view>
   <!-- 底部购物车 -->
-  <tab-cart hidden="{{hidden}}" cart_arr="{{cart_arr}}" num="{{num}}" sum="{{sum}}" order="{{order}}" _id="{{_id}}" bindtabcart="tabcart"></tab-cart>
+  <tab-cart hidden="{{hidden}}" cart_arr="{{cart_arr}}" num="{{num}}" sum="{{sum}}" order="{{order}}" _id="{{shop_id}}" bindtabcart="tabcart"></tab-cart>
   <!-- 购物车详细信息展示 -->
   <tabcart-info hidden="{{hidden}}" goods_arr="{{goods_arr}}" cart_arr="{{cart_arr}}" num="{{num}}" sum="{{sum}}" bindtabcartinfo="tabcartinfo"></tabcart-info>
 </view>

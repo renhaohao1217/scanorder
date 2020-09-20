@@ -13,7 +13,7 @@ Component({
     info () {
       let { indent } = this.data;
       wx.navigateTo({
-        url: `/pages/indent-message/indent-message?indent=${JSON.stringify(indent)}`
+        url: `/pages/indent-info/indent-info?indent=${JSON.stringify(indent)}`
       })
     }
   }

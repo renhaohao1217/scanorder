@@ -7,18 +7,6 @@ Component({
     item: {
       type: Object,
       value: {}
-    },
-    index: {
-      type: Number,
-      value: 0
-    },
-    end: {
-      type: Array,
-      value: []
-    },
-    result: {
-      type: Array,
-      value: []
     }
   },
   /**
@@ -32,16 +20,13 @@ Component({
    */
   methods: {
     toggle (event) {
-      let { index } = event.target.dataset;
-      let { result, end } = this.data;
-      result[index] = !result[index]
-      end[this.data.index] = result;
+      let { index } = event.currentTarget.dataset;
+      let { item } = this.data;
+      item.state[index] = !item.state[index];
       this.setData({
-        result,
-        end
+        item
       })
-      this.triggerEvent('update', { end })
-      for (let val of result) {
+      for (let val of item.state) {
         if (val) {
           return;
         }
@@ -56,7 +41,12 @@ Component({
         confirmColor: '#f33',
         success: (result) => {
           if (result.confirm) {
-            this.triggerEvent('remove', { index: this.data.index })
+            // 从数据库中删除任务
+            wx.cloud.database()
+              .collection('so_task')
+              .doc(item._id)
+              .remove();
+            this.triggerEvent('remove', { _id: item._id })
           }
         }
       });

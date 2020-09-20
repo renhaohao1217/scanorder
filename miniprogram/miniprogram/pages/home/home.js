@@ -59,6 +59,12 @@ Page({
       }
     });
   },
+  // 二维码餐牌
+  serial () {
+    wx.navigateTo({
+      url: '/pages/serial/serial'
+    })
+  },
   // 报表信息
   report () {
     wx.navigateTo({

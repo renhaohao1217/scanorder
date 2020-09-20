@@ -18,6 +18,7 @@
 .title-name {
   font-size: 18px;
   color: #f33;
+  font-weight: bold;
 }
 .title-time {
   font-size: 14px;
@@ -48,6 +49,10 @@
   width: 50px;
   height: 50px;
 }
+.list-name {
+  color: dodgerblue;
+  font-weight: bold;
+}
 
 /* 平板尺寸 */
 @media (min-width: 768px) {
@@ -57,4 +62,9 @@
   .title-time {
     font-size: 18rpx;
   }
+}
+
+/* 隐藏 */
+.hidden {
+  display: none;
 }

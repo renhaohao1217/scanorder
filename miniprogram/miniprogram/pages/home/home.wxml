@@ -12,6 +12,12 @@
     <image class="more" src="/images/more.png"></image>
   </view>
   <!-- home功能 -->
+  <!-- 餐牌 -->
+  <view class="home-features" bindtap="serial">
+    <image src="/images/serial.png"></image>
+    <text>餐牌</text>
+    <image class="more" src="/images/more.png"></image>
+  </view>
   <!-- 报表 -->
   <view class="home-features" bindtap="report">
     <image src="/images/report.png"></image>

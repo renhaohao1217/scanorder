@@ -7,7 +7,7 @@
   <!-- 订单状态 -->
   <view class="indent-state">
     <text>结账状态:</text>
-    <text>{{indent.state}}</text>
+    <text class="{{indent.state=='已支付' ? 'green' : ''}}">{{indent.state}}</text>
   </view>
   <!-- 订单时间 -->
   <view class="indent-time">

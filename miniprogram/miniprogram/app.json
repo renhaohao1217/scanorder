@@ -1,5 +1,8 @@
 {
   "pages": [ 
+    "pages/index/index",
+    "pages/home/home",
+    "pages/serial/serial",
     "pages/order/order", 
     "pages/business/business",  
     "pages/goods-info/goods-info",
@@ -7,13 +10,10 @@
     "pages/standard/standard",
     "pages/task/task",
     "pages/indent-info/indent-info",
-    "pages/indent-message/indent-message",
     "pages/indent/indent",
     "pages/report/report",
-    "pages/update_pwd/update_pwd",
-    "pages/home/home",
+    "pages/update_pwd/update_pwd",  
     "pages/userinfo/userinfo",
-    "pages/index/index",
     "pages/register/register",
     "pages/login/login"
   ],

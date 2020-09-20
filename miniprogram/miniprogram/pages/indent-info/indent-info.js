@@ -1,44 +1,43 @@
+//Page Object
 Page({
-  // 页面的初始数据
   data: {
-    cart_arr: [],
-    sum: '',
-    order: '',
-    time: '',
-    _id: ''
+    indent: {},
+    sum: 0
   },
-  // 生命周期函数--监听页面加载
-  onLoad: function (options) {
-    let { cart_arr, sum, order, _id } = options;
-    let time = Date.now();
-    cart_arr = JSON.parse(cart_arr);
-    this.setData({
-      cart_arr,
-      sum, order, time
-    })
-    wx.cloud.database()
-      .collection('so_order')
-      .add({
+  // 支付
+  pay () {
+    let { indent } = this.data;
+    const db = wx.cloud.database();
+    const _ = db.command;
+    db.collection('so_order')
+      .doc(indent._id)
+      .update({
         data: {
-          classify: order,
-          state: '待支付',
-          time,
-          goods: cart_arr,
-          shop_id: _id
+          state: '已支付'
+        },
+        success: res => {
+          wx.showToast({
+            title: '支付成功',
+            icon: 'none',
+            duration: 2000
+          })
+          this.setData({
+            'indent.state': '已支付'
+          })
         }
       })
-      .then(res => {
-        this.setData({
-          _id: res._id
-        })
-        wx.cloud.database()
-          .collection('so_task')
-          .add({
-            data: {
-              order_id: res._id,
-              shop_id: cart_arr[0].goodsList[0].shop_id
-            }
-          })
-      })
+  },
+  //options(Object)
+  onLoad: function (options) {
+    let { indent } = options;
+    let { sum } = this.data;
+    indent = JSON.parse(indent);
+    for (let item of indent.goods) {
+      sum += item.amount * item.goodsList[0].price
+    }
+    this.setData({
+      indent,
+      sum: parseFloat(sum).toFixed(2)
+    })
   }
-})
+});

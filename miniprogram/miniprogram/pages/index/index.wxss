@@ -7,7 +7,7 @@
 .index-button {
   width: 368rpx;
   padding: 80rpx;
-  padding-bottom: 40rpx;
+  padding-bottom: 20rpx;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 20rpx;
@@ -17,4 +17,38 @@
 .index-button > button {
   width: 100% !important;
   margin-bottom: 40rpx;
+}
+/* 商家区域 */
+.shop-container {
+  padding: 0 20rpx;
+}
+/* 点餐提示 */
+.container-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+/* 商家容器 */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10rpx;
+}
+/* 商家信息框 */
+.shop-info {
+  width: 100rpx;
+  padding: 20rpx;
+  text-align: center;
+}
+/* 商家头像 */
+.shop-image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  box-shadow: 0 0 10rpx #ccc;
+}
+/* 店铺名称 */
+.shop-name {
+  width: 100rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

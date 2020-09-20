@@ -1,0 +1,47 @@
+/* 内容区域 */
+.serial-container {
+  padding: 10rpx;
+  position: relative;
+}
+/* 输入框 */
+.input {
+  position: absolute;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.input > input {
+  padding: 10px;
+  width: 350rpx;
+}
+.input > button {
+  width: 185rpx !important;
+}
+/* 按钮 */
+.button {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.button > button {
+  width: 300rpx !important;
+}
+/* 内容区域 */
+.content {
+  margin: 10px;
+}
+.list {
+  padding: 10px;
+  border: 1px solid rgb(245, 245, 245);
+  margin: 10px auto;
+  border-radius: 5px;
+}
+
+/* 隐藏 */
+.hidden {
+  display: none;
+}

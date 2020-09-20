@@ -3,7 +3,8 @@ Page({
   data: {
     indent: [],
     date: '2020-09-19',
-    today: ''
+    today: '',
+    watcher: ''
   },
   // 改变日期
   bindDateChange (e) {
@@ -16,20 +17,29 @@ Page({
   },
   // 获取数据
   getIndent (left, right) {
+    // 实时数据更新
+    let { watcher } = this.data;
     const db = wx.cloud.database();
     const _ = db.command;
-    db.collection('so_order')
+    watcher = db.collection('so_order')
+      .orderBy('time', 'desc')
       .where({
         shop_id: _.eq(wx.getStorageSync('_id')),
         time: _.and(_.gt(left), _.lt(right))
       })
-      .orderBy('time', 'desc')
-      .get()
-      .then(res => {
-        this.setData({
-          indent: res.data
-        })
+      .watch({
+        onChange: (snapshot) => {
+          this.setData({
+            indent: snapshot.docs
+          })
+        },
+        onError: (err) => {
+          console.error('the watch closed because of error', err)
+        }
       })
+    this.setData({
+      watcher
+    })
   },
   //options(Object)
   onLoad: function (options) {
@@ -45,5 +55,10 @@ Page({
     let left = new Date(`${year}-${month}-${day} 00:00:00`).getTime(),
       right = parseInt(left) + 86400000;
     this.getIndent(left, right);
+  },
+  onUnload: function () {
+    // 关闭数据监听
+    let { watcher } = this.data;
+    watcher.close();
   }
 });

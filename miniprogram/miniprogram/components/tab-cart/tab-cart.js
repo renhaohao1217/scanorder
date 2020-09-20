@@ -75,7 +75,7 @@ Component({
     pay () {
       this.getCart()
         .then(res => {
-          let { cart_arr, sum, order, _id } = this.data;
+          let { cart_arr, order, _id } = this.data;
           cart_arr = res.result.list;
           if (!cart_arr.length) {
             wx.showToast({
@@ -85,9 +85,43 @@ Component({
             })
             return;
           }
-          wx.navigateTo({
-            url: `/pages/indent-info/indent-info?cart_arr=${JSON.stringify(cart_arr)}&sum=${sum}&order=${order}&_id=${_id}`,
-          });
+          // 创建订单
+          let time = Date.now();
+          wx.cloud.database()
+            .collection('so_order')
+            .add({
+              data: {
+                classify: order,
+                state: '待支付',
+                time,
+                goods: cart_arr,
+                shop_id: _id
+              }
+            })
+            .then(res => {
+              // 新建任务，添加到数据库中
+              let state = new Array(cart_arr.length).fill(true);
+              wx.cloud.database()
+                .collection('so_task')
+                .add({
+                  data: {
+                    order_id: res._id,
+                    shop_id: cart_arr[0].goodsList[0].shop_id,
+                    state
+                  }
+                })
+              // 构造参数，向订单详情页传递参数
+              let indent = {
+                _id: res._id,
+                classify: order,
+                time,
+                goods: cart_arr,
+                state: '待支付'
+              }
+              wx.navigateTo({
+                url: `/pages/indent-info/indent-info?indent=${JSON.stringify(indent)}`,
+              });
+            })
         });;
     },
   },

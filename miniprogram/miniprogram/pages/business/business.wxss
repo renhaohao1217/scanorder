@@ -25,7 +25,7 @@
 }
 /* 商品内容区域 */
 .order-container {
-  height: calc(100% - 240rpx);
+  height: calc(100% - 140rpx);
 }
 
 /* 平板尺寸 */
@@ -46,6 +46,6 @@
   }
   /* 商品内容区域 */
   .order-container {
-    height: calc(100% - 174rpx);
+    height: calc(100% - 108rpx);
   }
 }

@@ -24,6 +24,10 @@
   width: 100%;
   margin-top: 20px;
 }
+.green {
+  color: green !important;
+  font-weight: bold;
+}
 
 /* 平板尺寸 */
 @media (min-width: 768px) {

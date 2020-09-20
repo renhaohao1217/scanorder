@@ -17,6 +17,7 @@ exports.main = async (event, context) => {
       })
       .match(event.match)
       .sort({
+        sale:1,
         time:1
       })
       .end()
