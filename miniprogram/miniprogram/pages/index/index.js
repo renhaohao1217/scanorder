@@ -23,6 +23,11 @@ Page({
     // 获取商家信息
     wx.cloud.database()
       .collection('so_shop')
+      .field({
+        _id: true,
+        image: true,
+        shop: true
+      })
       .get()
       .then(res => {
         this.setData({

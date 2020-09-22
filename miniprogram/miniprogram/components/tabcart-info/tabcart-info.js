@@ -1,9 +1,5 @@
 Component({
   properties: {
-    hidden: {
-      type: Boolean,
-      value: true
-    },
     goods_arr: {
       type: Array,
       value: []
@@ -27,22 +23,22 @@ Component({
   methods: {
     // 清空购物车
     clear () {
-      let { goods_arr, cart_arr } = this.data;
-      const db = wx.cloud.database();
-      const _ = db.command;
+      let { goods_arr } = this.data;
       // 清空购物车的数据
-      for (let i = 0; i < cart_arr.length; i++) {
-        wx.cloud.callFunction({
-          name: 'getOpenid',
-          success: res => {
-            db.collection('so_cart')
-              .where({
-                _openid: _.eq(res.result.openid)
-              })
-              .remove()
-          }
-        })
-      }
+      wx.cloud.callFunction({
+        name: 'getOpenid',
+        success: res => {
+          wx.cloud.callFunction({
+            name: 'remove',
+            data: {
+              collection: 'so_cart',
+              where: {
+                _openid: res.result.openid
+              }
+            }
+          })
+        }
+      })
       for (let val of goods_arr) {
         val.cartList = [];
       }
@@ -52,7 +48,7 @@ Component({
         sum: 0,
         goods_arr
       })
-      this.triggerEvent('tabcartinfo', { cart_arr: [], num, sum, goods_arr })
+      this.triggerEvent('tabcartinfo', { cart_arr: [], num: 0, sum: 0, goods_arr })
     },
     // 计算购物车
     calc (event) {
@@ -76,6 +72,7 @@ Component({
         if (timer) {
           clearTimeout(timer);
         }
+        // 更新数据库，防抖处理
         timer = setTimeout(() => {
           // 如果数量为0，则从数据库中删除
           if (cart_arr[index].amount == 0) {
@@ -88,7 +85,6 @@ Component({
               }
             }
             cart_arr.splice(index, 1);
-            this.getCart();
           } else {
             // 更新数据库
             db.collection('so_cart')
@@ -103,7 +99,8 @@ Component({
           clearTimeout(timer);
           this.setData({
             timer: '',
-            goods_arr
+            goods_arr,
+            cart_arr
           })
         }, 300)
         // 更新数据
@@ -153,32 +150,6 @@ Component({
         })
         this.triggerEvent('tabcartinfo', { cart_arr, num, sum, goods_arr })
       }
-    },
-    // 获取购物车的信息
-    getCart () {
-      wx.cloud.callFunction({
-        name: 'lookup_cart',
-        data: {
-          collection: 'so_cart',
-          from: 'so_goods',
-          localField: 'goods_id',
-          foreignField: '_id',
-          as: 'goodsList',
-          match: {}
-        },
-        success: res => {
-          let num = 0, sum = 0;
-          for (let item of res.result.list) {
-            num += item.amount;
-            sum += item.amount * item.goodsList[0].price
-          }
-          this.setData({
-            cart_arr: res.result.list,
-            num,
-            sum: parseFloat(sum).toFixed(2)
-          })
-        }
-      })
-    },
+    }
   }
 });

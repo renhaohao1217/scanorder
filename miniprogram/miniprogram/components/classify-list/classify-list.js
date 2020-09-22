@@ -40,8 +40,6 @@ Component({
     select (event) {
       let { index } = event.currentTarget.dataset;
       let { classify_arr } = this.properties;
-      const db = wx.cloud.database();
-      const _ = db.command;
       // 获取分类对应的商品和购物车信息
       wx.cloud.callFunction({
         name: 'lookup',
@@ -96,7 +94,6 @@ Component({
       let shop_id = wx.getStorageSync('_id');
       let { classify, classify_arr } = this.data;
       const db = wx.cloud.database();
-      const _ = db.command;
       db.collection('so_classify')
         .add({
           data: {
@@ -154,7 +151,6 @@ Component({
         success: (result) => {
           if (result.confirm) {
             const db = wx.cloud.database();
-            const _ = db.command;
             let database = {
               classify_arr: 'so_classify',
               goods_arr: 'so_goods'
@@ -176,11 +172,15 @@ Component({
               })
             // 如果删除分类,则删除包含的商品
             if (target == 'classify_arr') {
-              db.collection('so_goods')
-                .where({
-                  classify_id: _id
-                })
-                .remove()
+              wx.cloud.callFunction({
+                name: 'remove',
+                data: {
+                  collection: 'so_goods',
+                  where: {
+                    classify_id: _id
+                  }
+                }
+              })
             }
           }
         }

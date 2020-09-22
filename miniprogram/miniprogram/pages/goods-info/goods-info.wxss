@@ -54,6 +54,10 @@ swiper,
   color: #696969;
 }
 
+.hidden {
+  display: none;
+}
+
 /* 平板尺寸 */
 @media (min-width: 768px) {
   .btn {

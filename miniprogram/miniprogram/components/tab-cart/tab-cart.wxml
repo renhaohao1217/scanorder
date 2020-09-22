@@ -1,7 +1,7 @@
 <!-- 底部购物车 -->
 <view class="order-footer">
   <view class="number" catchtap="show">
-    <image class="number" src="/images/cart.png"></image>
+    <image src="/images/cart.png"></image>
     <text>{{num}}</text>
   </view>
   <text>￥{{sum}}</text>

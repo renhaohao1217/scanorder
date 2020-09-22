@@ -4,17 +4,9 @@ Page({
     height:
       wx.getStorageSync('windowHeight') -
       wx.getStorageSync('statusBarHeight') -
-      wx.getStorageSync('navigationBarHeight') + 'px',
+      wx.getStorageSync('navigationBarHeight') - 50 + 'px',
     classify_arr: [],
     goods_arr: []
-  },
-  // 自定义函数
-  myevent (event) {
-    let { num, sum } = event.detail;
-    this.setData({
-      num,
-      sum
-    })
   },
   onShow () {
     const db = wx.cloud.database();
@@ -34,6 +26,7 @@ Page({
           .where({
             classify_id: _.eq(res.data[0]._id)
           })
+          .orderBy('sale', 'asc')
           .orderBy('time', 'asc')
           .get()
           .then(res => {

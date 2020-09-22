@@ -4,7 +4,7 @@
 <image src="/images/background.jpg"></image>
 <!-- 登录内容区域 -->
 <view class="login-container">
-  <input value="{{username}}" type="text" data-type="username" placeholder="请输入用户名/手机号" bindinput="input_model"></input>
-  <input value="{{password}}" type="text" data-type="password" password="{{true}}" placeholder="请输入密码" bindinput="input_model"></input>
+  <input value="{{username}}" type="text" data-type="username" placeholder="请输入用户名/手机号" bindblur="blur"></input>
+  <input value="{{password}}" type="text" data-type="password" password="{{true}}" placeholder="请输入密码" bindblur="blur"></input>
   <button type="primary" bindtap="login">登录</button>
 </view>

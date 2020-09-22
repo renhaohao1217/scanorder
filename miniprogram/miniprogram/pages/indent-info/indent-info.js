@@ -8,14 +8,13 @@ Page({
   pay () {
     let { indent } = this.data;
     const db = wx.cloud.database();
-    const _ = db.command;
     db.collection('so_order')
       .doc(indent._id)
       .update({
         data: {
           state: '已支付'
         },
-        success: res => {
+        success: () => {
           wx.showToast({
             title: '支付成功',
             icon: 'none',
@@ -24,6 +23,17 @@ Page({
           this.setData({
             'indent.state': '已支付'
           })
+          // 新建任务，添加到数据库中
+          let state = new Array(indent.goods.length).fill(true);
+          wx.cloud.database()
+            .collection('so_task')
+            .add({
+              data: {
+                order_id: indent._id,
+                shop_id: indent.goods[0].goodsList[0].shop_id,
+                state
+              }
+            })
         }
       })
   },

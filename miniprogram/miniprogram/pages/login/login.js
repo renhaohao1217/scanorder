@@ -1,11 +1,12 @@
 Page({
   // 页面的初始数据
   data: {
-    username: 'a11111',
-    password: 'a11111'
+    username: '',
+    password: ''
   },
-  // 双向数据绑定
-  input_model (event) {
+  // 输入框失去焦点时更改数据
+  blur (event) {
+    // 获取输入框类型
     let { type } = event.target.dataset;
     this.setData({
       [type]: event.detail.value

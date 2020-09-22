@@ -25,14 +25,18 @@
 }
 /* 商品内容区域 */
 .order-container {
-  height: calc(100% - 140rpx);
+  height: calc(100% - 240rpx);
+}
+
+.hidden {
+  display: none;
 }
 
 /* 平板尺寸 */
 @media (min-width: 768px) {
   /* 商家信息 */
   .order-shop {
-    height: 68rpx;
+    height: 74rpx;
   }
   .shop-name {
     font-size: 30rpx;
@@ -46,6 +50,6 @@
   }
   /* 商品内容区域 */
   .order-container {
-    height: calc(100% - 108rpx);
+    height: calc(100% - 182rpx);
   }
 }

@@ -87,8 +87,8 @@ Component({
           }
           // 创建订单
           let time = Date.now();
-          wx.cloud.database()
-            .collection('so_order')
+          const db = wx.cloud.database();
+          db.collection('so_order')
             .add({
               data: {
                 classify: order,
@@ -99,17 +99,22 @@ Component({
               }
             })
             .then(res => {
-              // 新建任务，添加到数据库中
-              let state = new Array(cart_arr.length).fill(true);
-              wx.cloud.database()
-                .collection('so_task')
-                .add({
-                  data: {
-                    order_id: res._id,
-                    shop_id: cart_arr[0].goodsList[0].shop_id,
-                    state
-                  }
-                })
+              // 清空购物车
+              wx.cloud.callFunction({
+                name: 'getOpenid',
+                success: res => {
+                  wx.cloud.callFunction({
+                    name: 'remove',
+                    data: {
+                      collection: 'so_cart',
+                      where: {
+                        _openid: res.result.openid
+                      }
+                    }
+                  })
+                  this.triggerEvent('tabcart', { cart_arr: [], num: 0, sum: 0 })
+                }
+              })
               // 构造参数，向订单详情页传递参数
               let indent = {
                 _id: res._id,
@@ -118,6 +123,7 @@ Component({
                 goods: cart_arr,
                 state: '待支付'
               }
+              // 跳转到订单详情页
               wx.navigateTo({
                 url: `/pages/indent-info/indent-info?indent=${JSON.stringify(indent)}`,
               });

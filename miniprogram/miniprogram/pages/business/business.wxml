@@ -17,5 +17,5 @@
   <!-- 底部购物车 -->
   <tab-cart hidden="{{hidden}}" cart_arr="{{cart_arr}}" num="{{num}}" sum="{{sum}}" order="{{order}}" _id="{{shop_id}}" bindtabcart="tabcart"></tab-cart>
   <!-- 购物车详细信息展示 -->
-  <tabcart-info hidden="{{hidden}}" goods_arr="{{goods_arr}}" cart_arr="{{cart_arr}}" num="{{num}}" sum="{{sum}}" bindtabcartinfo="tabcartinfo"></tabcart-info>
+  <tabcart-info class="{{hidden ? 'hidden' : ''}}" goods_arr="{{goods_arr}}" cart_arr="{{cart_arr}}" num="{{num}}" sum="{{sum}}" bindtabcartinfo="tabcartinfo"></tabcart-info>
 </view>

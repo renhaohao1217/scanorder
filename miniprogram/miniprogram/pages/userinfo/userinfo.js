@@ -127,7 +127,7 @@ Page({
   // 获取定位信息
   location () {
     // 引入SDK核心类
-    const QQMapWX = require('../../qqmap-wx-jssdk1.0/qqmap-wx-jssdk.js')
+    const QQMapWX = require('../../utils/qqmap-wx-jssdk1.0/qqmap-wx-jssdk.js')
     // 实例化API核心类
     const wxMap = new QQMapWX({
       key: 'DJ4BZ-JPUW5-WTUII-QJ6JK-I4HE7-VJFSJ'
@@ -190,12 +190,9 @@ Page({
   //options(Object)
   onLoad: function (options) {
     // 获取从home组件传递过来的数据
-    const eventChannel = this.getOpenerEventChannel()
-    eventChannel.on('acceptDataFromOpenerPage', data => {
-      let { address, image, phone, shop, username, _id, region } = data.data;
-      this.setData({
-        address, image, phone, shop, username, _id, region
-      })
+    let { address, image, phone, shop, username, _id, region } = JSON.parse(options.data);
+    this.setData({
+      address, image, phone, shop, username, _id, region
     })
   }
 });

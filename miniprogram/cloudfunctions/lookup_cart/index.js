@@ -16,9 +16,6 @@ exports.main = async (event, context) => {
         as:event.as
       })
       .match(event.match)
-      // .sort({
-      //   time:1
-      // })
       .end()
   }catch(e){
     console.error(e)

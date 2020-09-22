@@ -57,32 +57,6 @@ Page({
       cart_arr, goods_arr, num, sum: parseFloat(sum).toFixed(2)
     })
   },
-  // 获取购物车的信息
-  getCart () {
-    wx.cloud.callFunction({
-      name: 'lookup_cart',
-      data: {
-        collection: 'so_cart',
-        from: 'so_goods',
-        localField: 'goods_id',
-        foreignField: '_id',
-        as: 'goodsList',
-        match: {}
-      },
-      success: res => {
-        let num = 0, sum = 0;
-        for (let item of res.result.list) {
-          num += item.amount;
-          sum += item.amount * item.goodsList[0].price
-        }
-        this.setData({
-          cart_arr: res.result.list,
-          num,
-          sum: parseFloat(sum).toFixed(2)
-        })
-      }
-    })
-  },
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
     let { method, order, shop_id } = options;
@@ -123,6 +97,10 @@ Page({
             }
           })
         })
+    } else {
+      this.setData({
+        order
+      })
     }
     // 商家信息
     db.collection('so_shop')
@@ -178,6 +156,5 @@ Page({
           }
         })
       })
-    this.getCart();
   }
 })

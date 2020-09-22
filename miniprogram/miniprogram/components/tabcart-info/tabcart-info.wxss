@@ -61,10 +61,6 @@
   padding: 0 10rpx;
 }
 
-.hidden {
-  display: none;
-}
-
 /* 平板尺寸 */
 @media (min-width: 768px) {
   /* 购物车详细展示 */

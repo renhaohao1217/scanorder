@@ -12,8 +12,9 @@
   <view class="info-time">下单时间:{{filter.date(indent.time)}}</view>
   <!-- 商品列表 -->
   <order-list wx:for="{{indent.goods}}" wx:key="index" info="{{item}}"></order-list>
-  <view class="footer" wx:if="{{indent.state=='待支付'}}">
+  <view class="footer">
     <text>总价:￥{{sum}}</text>
-    <button bindtap="pay">去结账</button>
+    <button bindtap="pay" wx:if="{{indent.state=='待支付'}}">去结账</button>
+    <button type="primary" wx:else>已支付</button>
   </view>
 </view>

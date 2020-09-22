@@ -11,52 +11,36 @@ Page({
   },
   // 初始化获取数据
   init () {
-    wx.getStorage({
-      key: '_id',
-      success: (result) => {
-        const _id = result.data;
-        const db = wx.cloud.database();
-        const _ = db.command;
-        db.collection('so_shop')
-          .field({
-            address: true,
-            phone: true,
-            shop: true,
-            username: true,
-            image: true,
-            region: true,
-          })
-          .where({
-            _id: _.eq(_id)
-          })
-          .get()
-          .then(res => {
-            let { address, phone, shop, username, _id, region } = res.data[0];
-            let image = res.data[0].image || '/images/logo.svg'
-            this.setData({
-              address,
-              phone,
-              shop,
-              username,
-              image,
-              _id,
-              region
-            })
-          })
-      }
-    });
+    wx.cloud.database()
+      .collection('so_shop')
+      .doc(wx.getStorageSync('_id'))
+      .field({
+        address: true,
+        phone: true,
+        shop: true,
+        username: true,
+        image: true,
+        region: true,
+      })
+      .get()
+      .then(res => {
+        let { address, phone, shop, username, _id, region } = res.data;
+        let image = res.data.image || '/images/logo.svg'
+        this.setData({
+          address,
+          phone,
+          shop,
+          username,
+          image,
+          _id,
+          region
+        })
+      })
   },
   // 用户详细信息
   skip_shop () {
     wx.navigateTo({
-      url: '/pages/userinfo/userinfo',
-      success: res => {
-        let { address, phone, shop, username, image, _id, region } = this.data;
-        let data = {
-          address, phone, shop, username, image, _id, region
-        }
-        res.eventChannel.emit('acceptDataFromOpenerPage', { data })
-      }
+      url: `/pages/userinfo/userinfo?data=${JSON.stringify(this.data)}`
     });
   },
   // 二维码餐牌
