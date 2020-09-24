@@ -6,7 +6,13 @@ Page({
       wx.getStorageSync('statusBarHeight') -
       wx.getStorageSync('navigationBarHeight') - 50 + 'px',
     classify_arr: [],
-    goods_arr: []
+    goods_arr: [],
+    active:0
+  },
+  select(event){
+    this.setData({
+      active:event.detail.active
+    })
   },
   onShow () {
     const db = wx.cloud.database();
@@ -24,7 +30,7 @@ Page({
         // 获取分类对应的商品
         !!res.data.length && db.collection('so_goods')
           .where({
-            classify_id: _.eq(res.data[0]._id)
+            classify_id: _.eq(res.data[this.data.active]._id)
           })
           .orderBy('sale', 'asc')
           .orderBy('time', 'asc')

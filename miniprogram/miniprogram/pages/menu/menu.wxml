@@ -2,5 +2,5 @@
 <navigation-bar title="菜单"></navigation-bar>
 <!-- 菜单区域 -->
 <view class="menu-container" style="{{'height:' + height}}">
-  <classify-list source="waiter" classify_arr="{{classify_arr}}" goods_arr="{{goods_arr}}" bindmyevent="myevent"></classify-list>
+  <classify-list source="waiter" classify_arr="{{classify_arr}}" goods_arr="{{goods_arr}}" bindselect="select"></classify-list>
 </view>

@@ -58,6 +58,7 @@ Component({
             goods_arr: res.result.list,
             active: index
           })
+          this.triggerEvent('select',{active:index})
         }
       })
     },

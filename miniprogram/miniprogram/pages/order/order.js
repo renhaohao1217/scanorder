@@ -21,7 +21,7 @@ Page({
       }
     })
   },
-  onLoad () {
+  onShow () {
     let { table, serial } = this.data;
     const db = wx.cloud.database();
     const _ = db.command;

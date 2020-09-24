@@ -12,6 +12,9 @@
   height: 100rpx;
   margin-right: 20rpx;
 }
+.order-list > text:nth-child(2) {
+  width: 260rpx;
+}
 .order-list > text:nth-child(3) {
   color: #f33;
 }
