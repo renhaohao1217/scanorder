@@ -129,9 +129,10 @@
         </div>
       </div>
       <!-- 关于我们 -->
-      <div class="container">
+      <div class="container about">
         <!-- 视频背景 -->
-        <video src="../assets/images/didi-home-video0626.mp4"
+        <video v-if="!isPhone"
+               src="../assets/images/didi-home-video0626.mp4"
                autoplay
                muted
                loop></video>
@@ -146,6 +147,7 @@
             <h2>微信小程序</h2>
           </div>
         </div>
+        <!-- <img src="../assets/images/media/didi-home-video0626.fa9d7e1c000.jpg"> -->
       </div>
     </section>
   </div>
@@ -156,6 +158,7 @@ export default {
   data() {
     return {
       timer: "",
+      isPhone: false,
     };
   },
   methods: {
@@ -239,6 +242,55 @@ export default {
     },
   },
   mounted() {
+    // 判断是否是移动端，然后给关于我们页面添加动画背景
+    this.isPhone =
+      navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      ) != null;
+    if (this.isPhone) {
+      const about = document.querySelector(".about");
+      const imgs = {};
+      for (let i = 0; i <= 454; i++) {
+        let img = new Image();
+        img.src = `/media/didi-home-video0626.fa9d7e1c${i
+          .toString()
+          .padStart(3, "0")}.jpg`;
+        imgs[i] = img;
+      }
+      let index = 0;
+      let timer = "";
+      window.addEventListener("scroll", (event) => {
+        // 获取滑轮滚动的距离
+        let scrollTop =
+          window.pageYOffset ||
+          document.documentElement.scrollTop ||
+          document.body.scrollTop;
+        // 获取网页可见区域的高度
+        let height =
+          window.innerHeight ||
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+        if (timer && scrollTop <= height * 2) {
+          clearInterval(timer);
+          timer = "";
+        }
+        if (timer) {
+          return;
+        }
+        if (scrollTop >= height * 2) {
+          timer = setInterval(() => {
+            if (index != 0) {
+              about.removeChild(imgs[index - 1]);
+            }
+            if (index == 455) {
+              index = 0;
+            }
+            about.appendChild(imgs[index]);
+            index++;
+          }, 55);
+        }
+      });
+    }
     // 绑定滚动事件
     window.addEventListener("scroll", this.handleScroll);
     // 实现放大图片的功能
@@ -514,6 +566,10 @@ export default {
             text-align: center;
           }
         }
+      }
+      // 图片
+      img {
+        height: 100%;
       }
     }
   }
@@ -932,12 +988,14 @@ export default {
       }
       // 功能介绍第一页
       .container:nth-child(2) {
+        height: 400px;
         // 内容
         .content {
           // 左边内容
           .left {
+            padding: 0 20px;
             h2 {
-              font-size: 16px;
+              font-size: 20px;
             }
             p {
               font-size: 14px;
@@ -945,19 +1003,23 @@ export default {
           }
           // 右边内容
           .right {
-            width: 160px;
-            img {
-              width: 160px;
-            }
+            display: none;
+            // width: 160px;
+            // img {
+            //   width: 160px;
+            // }
           }
         }
       }
       // 功能介绍第二页
       .container:nth-child(3) {
+        height: 600px;
         // 内容
         .content {
           h2 {
-            font-size: 22px;
+            font-size: 20px;
+            color: #f33;
+            margin-bottom: 10px;
           }
           .el-carousel__item {
             display: flex;
@@ -981,12 +1043,15 @@ export default {
       }
       // 使用教程
       .container:nth-child(4) {
+        height: 600px;
         // 内容
         .content {
           h2 {
             font-size: 24px;
           }
           ul {
+            display: flex;
+            flex-direction: column;
             margin-top: 20px;
             li {
               width: 100%;
@@ -1009,12 +1074,11 @@ export default {
       }
       // 关于我们
       .container:nth-child(5) {
-        // 视频背景
-        video {
-          height: 100%;
-        }
         // 内容
         .content {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
           // 左边内容
           .left {
             h2 {
@@ -1026,8 +1090,9 @@ export default {
           }
           // 右边内容
           .right {
+            margin-top: 100px;
             h2 {
-              font-size: 18px;
+              font-size: 14px;
             }
             img {
               width: 120px;

@@ -31,6 +31,8 @@ Page({
       })
       .get()
       .then(res => {
+        table=[];
+        serial=[];
         for (let val of res.data) {
           if (val.type == 'table') {
             table.push(val.value)
@@ -38,6 +40,9 @@ Page({
             serial.push(val.value)
           }
         }
+        this.setData({
+          table,serial
+        })
       })
   }
 })
