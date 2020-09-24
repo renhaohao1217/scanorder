@@ -22,7 +22,7 @@
 | so_cart     | 购物车集合，记载用户的购物车信息 | 点餐模块                                                     |
 | so_order    | 订单集合，记载商家的订单信息     | 报表模块<br />订单模块<br />任务模块                         |
 | so_task     | 任务集合，记载商家的任务信息     | 任务模块                                                     |
-| so_serial   | 餐牌集合，用来给用户提供餐牌     |                                                              |
+| so_serial   | 餐牌集合，用来给用户提供餐牌     | 点餐模块                                                     |
 
 #### 1.2 商家信息集合(so_shop)
 
@@ -417,4 +417,83 @@ module.exports = {
 ## 客户端client
 
 > 地址：[https://zhima.applinzi.com](https://zhima.applinzi.com/)
+
+### 1 项目框架搭建
+
+```shell
+// 使用脚手架创建项目
+vue create client
+
+// 进入client目录
+cd client
+
+// 安装依赖包
+npm install
+
+// 运行项目
+npm run serve
+```
+
+### 2 界面
+
+- `mounted`钩子函数执行时执行以下代码：
+
+  ```js
+  // 通过正则表达式与navigator.userAgent匹配判断当前是移动端还是PC端
+  // 如果是移动端，则将html标签中的video元素的display设置为none
+  // 通过图片DOM对象预加载，放在内存中。
+  // 然后通过页面append当前图片DOM，同时移除上一帧DOM图片，保证页面中只有一个图片DOM元素
+  // 监听scroll事件，判断动画是否要出现 / 隐藏，以此设置setInterval / clearIntercal
+  
+  this.isPhone=navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows|Phone)/i)!= null;
+  
+  // 获取滑轮滚动的距离
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+  
+  // 获取网页可见区域的高度
+  let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+  
+  ```
+
+- 实现放大图片的功能
+
+  ```js
+  // 需要获取到图片DOM元素、选择框DOM元素、放大容器DOM元素
+  // 首先给图片DOM元素绑定mouseenter事件，将选择框和放大容器的display设置为block
+  // 然后给图片DOM元素绑定mousemove事件，当事件触发时通过event.clientX、event.clientY，获得鼠标的位置，通过img.getBoundingClientRect().left / .top获得图片的位置信息，计算得到鼠标在图片内部的偏移量，以此来移动选择框
+  // 给图片DOM元素绑定mouseleave事件，当事件触发时将选择框和放大容器的display设置为none，同时移除图片DOM元素的mousemove事件
+  
+  let left = event.clientX - rect.left;
+  let top = event.clientY - rect.top;
+  
+  // 将放大容器的背景图片的尺寸变大，设置放大容器DOM元素背景的background-position实现放大的效果
+  ```
+
+- 监听页面滚动，实现导航栏是否选中的效果切换
+
+### 3 打包
+
+- 因为vue是单页面应用，不利于SEO搜索引擎优化
+- 安装prerender-spa-plugin这个插件，在vue.config.js文件中配置要预渲染的路由，然后将爬取之后的页面生成到dist目录中
+
+## 服务端server
+
+### 1 项目框架搭建
+
+```shell
+// 创建项目目录
+mkdir server
+
+// 进入目录
+cd server
+
+// 初始化配置
+npm init -y
+
+// 安装express模块
+npm install express --save
+
+// 运行项目
+node index.js
+```
 
