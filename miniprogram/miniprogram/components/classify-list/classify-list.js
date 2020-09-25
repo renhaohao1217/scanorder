@@ -58,7 +58,7 @@ Component({
             goods_arr: res.result.list,
             active: index
           })
-          this.triggerEvent('select',{active:index})
+          this.triggerEvent('select', { active: index })
         }
       })
     },
@@ -303,7 +303,7 @@ Component({
         goods_arr[index].cartList[0].amount++;
         num++
         sum = parseFloat(sum) + parseFloat(goods_arr[index].price);
-        // 将数据返回至购物车
+        // 将数据返回至点餐页面
         this.triggerEvent('myevent', { num, sum, goods_arr });
         if (timer) {
           clearTimeout(timer);

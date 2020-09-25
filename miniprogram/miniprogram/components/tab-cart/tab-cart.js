@@ -131,20 +131,21 @@ Component({
         });;
     },
   },
+  // 组件初始化完毕，进入页面节点树
   attached: function () {
     this.getCart()
       .then(res => {
-        let num = 0, sum = 0;
-        for (let item of res.result.list) {
+        let num = 0, sum = 0, cart_arr = res.result.list;
+        for (let item of cart_arr) {
           num += item.amount;
           sum += item.amount * item.goodsList[0].price
         }
         this.setData({
-          cart_arr: res.result.list,
+          cart_arr,
           num,
           sum: parseFloat(sum).toFixed(2)
         })
-        this.triggerEvent('tabcart', { cart_arr: res.result.list, num, sum })
+        this.triggerEvent('tabcart', { cart_arr, num, sum })
       });
   }
 });

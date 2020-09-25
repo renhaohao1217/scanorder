@@ -147,7 +147,6 @@
             <h2>微信小程序</h2>
           </div>
         </div>
-        <!-- <img src="../assets/images/media/didi-home-video0626.fa9d7e1c000.jpg"> -->
       </div>
     </section>
   </div>
@@ -259,6 +258,7 @@ export default {
       }
       let index = 300;
       let timer = "";
+      let top = about.getBoundingClientRect().top;
       window.addEventListener("scroll", (event) => {
         // 获取滑轮滚动的距离
         let scrollTop =
@@ -270,14 +270,14 @@ export default {
           window.innerHeight ||
           document.documentElement.clientHeight ||
           document.body.clientHeight;
-        if (timer && scrollTop <= height * 2) {
+        if (timer && scrollTop + height <= top) {
           clearInterval(timer);
           timer = "";
         }
         if (timer) {
           return;
         }
-        if (scrollTop >= height * 2) {
+        if (scrollTop + height >= top) {
           timer = setInterval(() => {
             if (index != 300) {
               about.removeChild(imgs[index - 1]);

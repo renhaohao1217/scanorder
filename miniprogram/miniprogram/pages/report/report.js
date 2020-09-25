@@ -31,7 +31,6 @@ Page({
     sales = [];
     start = new Date(`${start} 00:00:00`).getTime();
     end = new Date(`${end} 23:59:59`).getTime();
-    
     // 从数据库中获取数据
     const db = wx.cloud.database();
     const _ = db.command;
@@ -62,7 +61,7 @@ Page({
         for (let val of num) {
           for (let key in hash) {
             if (hash[key] == val) {
-              if(sales.length<=5){
+              if (sales.length <= 5) {
                 sales.push({
                   title: key,
                   amount: val
@@ -83,7 +82,7 @@ Page({
   draw (sales) {
     const query = wx.createSelectorQuery()
     query.select('#myCanvas')
-      .fields({ node: true, size: true })
+      .fields({ node: true })
       .exec((res) => {
         const canvas = res[0].node;
         const ctx = canvas.getContext('2d');
