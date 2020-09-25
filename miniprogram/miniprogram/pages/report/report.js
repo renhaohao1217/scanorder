@@ -61,7 +61,7 @@ Page({
         for (let val of num) {
           for (let key in hash) {
             if (hash[key] == val) {
-              if (sales.length <= 5) {
+              if (sales.length < 5) {
                 sales.push({
                   title: key,
                   amount: val
