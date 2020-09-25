@@ -10,7 +10,7 @@ Page({
   },
   // 改变日期
   bindDateChange (e) {
-    let { type } = e.target.dataset;
+    let { type } = e.currentTarget.dataset;
     let { value } = e.detail;
     let { start, end } = this.data;
     this.setData({
@@ -31,6 +31,7 @@ Page({
     sales = [];
     start = new Date(`${start} 00:00:00`).getTime();
     end = new Date(`${end} 23:59:59`).getTime();
+    
     // 从数据库中获取数据
     const db = wx.cloud.database();
     const _ = db.command;
@@ -61,12 +62,11 @@ Page({
         for (let val of num) {
           for (let key in hash) {
             if (hash[key] == val) {
-              sales.push({
-                title: key,
-                amount: val
-              })
-              if (sales.length == 5) {
-                return;
+              if(sales.length<=5){
+                sales.push({
+                  title: key,
+                  amount: val
+                })
               }
             }
           }

@@ -250,14 +250,14 @@ export default {
     if (this.isPhone) {
       const about = document.querySelector(".about");
       const imgs = {};
-      for (let i = 0; i <= 454; i++) {
+      for (let i = 300; i < 401; i++) {
         let img = new Image();
         img.src = `/media/didi-home-video0626.fa9d7e1c${i
           .toString()
           .padStart(3, "0")}.jpg`;
         imgs[i] = img;
       }
-      let index = 0;
+      let index = 300;
       let timer = "";
       window.addEventListener("scroll", (event) => {
         // 获取滑轮滚动的距离
@@ -279,15 +279,15 @@ export default {
         }
         if (scrollTop >= height * 2) {
           timer = setInterval(() => {
-            if (index != 0) {
+            if (index != 300) {
               about.removeChild(imgs[index - 1]);
             }
-            if (index == 455) {
-              index = 0;
+            if (index == 401) {
+              index = 300;
             }
             about.appendChild(imgs[index]);
             index++;
-          }, 55);
+          }, 40);
         }
       });
     }
